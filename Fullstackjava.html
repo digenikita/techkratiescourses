@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechKraftiers Digital - Java Full Stack Development</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+:root{
+    --primary-bg:#ffffff;
+    --surface:#ffffff;
+    --surface-light:#fff7ed;
+    --accent-orange:#f97316;
+    --text-light:#222222;
+    --text-muted:#666666;
+    --border-light:rgba(249,115,22,0.15);
+}
+html{
+    scroll-behavior:smooth;
+}
+body{
+    font-family:'Poppins',sans-serif;
+    background:#ffffff;
+    color:var(--text-light);
+    overflow-x:hidden;
+}
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+    background:rgba(225, 222, 231, 0.95);
+    backdrop-filter:blur(14px);
+    padding:1rem 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 20px 60px rgba(0,0,0,0.4);
+    border-bottom:1px solid var(--border-light);
+}
+.navbar-brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.6rem;
+    font-weight:800;
+}
+.navbar-brand i{
+    color:var(--accent-orange);
+}
+.navbar-brand span{
+    background:linear-gradient(135deg,var(--accent-orange),var(--accent-orange));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+.nav-menu{
+    display:flex;
+    list-style:none;
+    gap:2rem;
+    align-items:center;
+}
+.nav-menu a{
+    text-decoration:none;
+    color:var(--text-light);
+    font-weight:500;
+    transition:0.3s;
+}
+.nav-menu a:hover{
+    color:var(--accent-orange);
+}
+.nav-cta{
+    background:linear-gradient(135deg,var(--accent-orange),var(--accent-orange));
+    color:#fff;
+    border:none;
+    padding:12px 24px;
+    border-radius:50px;
+    cursor:pointer;
+    font-weight:600;
+    box-shadow:0 4px 15px rgba(249,115,22,0.3);
+}
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:140px 5% 80px;
+}
+.hero-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:4rem;
+    align-items:center;
+    max-width:1200px;
+    margin:0 auto;
+}
+.hero-content h1{
+    font-size:3.5rem;
+    line-height:1.2;
+    margin-bottom:20px;
+    font-weight:800;
+}
+.hero-content h1 span{
+    color:var(--accent-orange);
+}
+.hero-content p{
+    font-size:1.1rem;
+    line-height:1.8;
+    color:var(--text-muted);
+    margin-bottom:30px;
+}
+.hero-buttons{
+    display:flex;
+    gap:20px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+}
+.btn-primary,
+.btn-secondary{
+    padding:16px 30px;
+    border:none;
+    border-radius:50px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+}
+.btn-primary{
+    background:linear-gradient(135deg,var(--accent-orange),var(--accent-orange));
+    color:#fff;
+    box-shadow:0 4px 20px rgba(249,115,22,0.4);
+}
+.btn-secondary{
+    border:2px solid var(--accent-orange);
+    background:transparent;
+    color:var(--text-light);
+}
+.btn-primary:hover,
+.btn-secondary:hover{
+    transform:translateY(-5px);
+}
+.hero-image img{
+    width:100%;
+    border-radius:20px;
+    box-shadow:0 25px 60px rgba(168,85,247,0.2);
+    border:1px solid var(--border-light);
+}
+.stats-container{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+.stat-card{
+    background:rgba(255,255,255,0.04);
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(0,0,0,0.3);
+    border:1px solid var(--border-light);
+}
+.stat-card h3{
+    font-size:2rem;
+    color:var(--accent-orange);
+}
+.section{
+    padding:100px 5%;
+}
+.section-title{
+    text-align:center;
+    margin-bottom:4rem;
+}
+.section-title h2{
+    font-size:3rem;
+}
+.section-title span{
+    color:var(--accent-orange);
+}
+.section-title p{
+    color:var(--text-muted);
+    margin-top:10px;
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:24px;
+    max-width:1200px;
+    margin:0 auto;
+}
+.card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border-light);
+    padding:32px;
+    border-radius:24px;
+    transition:transform .25s ease, border-color .25s ease;
+}
+.card:hover{
+    transform:translateY(-10px);
+    border-color:var(--accent-orange);
+    background:rgba(168,85,247,0.05);
+}
+.card h3{
+    margin-bottom:14px;
+    color:#fff;
+}
+.card p{
+    color:var(--text-muted);
+    line-height:1.8;
+}
+.curriculum{
+    padding:100px 5%;
+    background:rgba(30,13,69,0.4);
+}
+.curriculum-accordion{
+    max-width:1100px;
+    margin:auto;
+}
+.accordion-item{
+    background:var(--surface);
+    border-radius:18px;
+    margin-bottom:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+    border:1px solid var(--border-light);
+}
+.accordion-header{
+    width:100%;
+    background:rgba(255,255,255,0.01);
+    border:none;
+    padding:24px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:1.25rem;
+    font-weight:600;
+    cursor:pointer;
+    color:#fff;
+    transition:0.3s;
+    font-family:'Poppins',sans-serif;
+}
+.accordion-header:hover{
+    background:rgba(168,85,247,0.1);
+}
+.accordion-header i{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.05);
+    color:var(--accent-orange);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1rem;
+    transition:0.3s;
+}
+.accordion-content{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+    background:rgba(18,7,43,0.6);
+}
+.accordion-content ul{
+    padding:20px 35px 30px;
+}
+.accordion-content ul li{
+    margin-bottom:12px;
+    color:var(--text-muted);
+    font-size:1rem;
+    list-style:none;
+    position:relative;
+    padding-left:22px;
+}
+.accordion-content ul li::before{
+    content:'•';
+    position:absolute;
+    left:0;
+    color:var(--accent-orange);
+    font-size:1.3rem;
+}
+.accordion-item.active .accordion-content{
+    max-height:400px;
+}
+.accordion-item.active .accordion-header i{
+    transform:rotate(45deg);
+}
+.timeline{
+    position:relative;
+    padding:40px 0;
+    max-width:1000px;
+    margin:0 auto;
+}
+.timeline::before{
+    content:'';
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:50%;
+    width:2px;
+    background:linear-gradient(to bottom,var(--accent-orange),var(--accent-orange));
+    transform:translateX(-50%);
+}
+.timeline-step{
+    position:relative;
+    display:grid;
+    grid-template-columns:1fr;
+    margin-bottom:48px;
+}
+.timeline-card{
+    position:relative;
+    max-width:45%;
+    padding:24px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border-light);
+    border-radius:24px;
+}
+.timeline-step:nth-child(even) .timeline-card{
+    margin-left:auto;
+}
+.timeline-number{
+    position:absolute;
+    top:24px;
+    left:50%;
+    transform:translateX(-50%);
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:var(--surface-light);
+    border:2px solid var(--accent-orange);
+    display:grid;
+    place-items:center;
+    color:#fff;
+    font-weight:800;
+    z-index:2;
+}
+.tools-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:22px;
+    max-width:1200px;
+    margin:0 auto;
+}
+.tool-card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border-light);
+    border-radius:24px;
+    padding:28px 20px;
+    text-align:center;
+    transition:transform .25s ease, border-color .25s ease;
+}
+.tool-card:hover{
+    transform:translateY(-8px);
+    border-color:var(--accent-orange);
+    background:rgba(249,115,22,0.05);
+}
+.tool-card img{
+    width:64px;
+    height:64px;
+    object-fit:contain;
+    margin-bottom:18px;
+}
+.tool-card h4{
+    color:#181616;
+}
+.contact-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+    max-width:1200px;
+    margin:0 auto;
+}
+.contact-card{
+    background:rgba(255,255,255,0.03);
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    border:1px solid var(--border-light);
+}
+.contact-card i{
+    font-size:2.5rem;
+    color:var(--accent-orange);
+    margin-bottom:20px;
+}
+.form-card{
+    background:var(--surface);
+    border:1px solid var(--border-light);
+    border-radius:32px;
+    padding:40px;
+    max-width:600px;
+    margin:0 auto;
+    box-shadow:0 30px 80px rgba(0,0,0,0.5);
+}
+.form-row{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+.form-row input,
+.form-row select,
+.form-row textarea{
+    width:100%;
+    border-radius:12px;
+    border:1px solid rgba(168,85,247,0.3);
+    background:rgba(255,255,255,0.05);
+    color:#fff;
+    padding:16px 20px;
+    font-family:'Poppins',sans-serif;
+}
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus{
+    outline:none;
+    border-color:var(--accent-orange);
+}
+.form-row button{
+    background:linear-gradient(135deg,var(--accent-orange),var(--accent-orange));
+    border:none;
+    color:#fff;
+    border-radius:50px;
+    padding:16px 34px;
+    font-weight:700;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.3s;
+    box-shadow:0 4px 15px rgba(249,115,22,0.3);
+}
+.form-row button:hover{
+    transform:translateY(-3px);
+}
+footer{
+    background:#ffffff;
+    color:var(--text-muted);
+    text-align:center;
+    padding:30px;
+    border-top:1px solid var(--border-light);
+}
+@media(max-width:768px){
+    .hero-container{grid-template-columns:1fr;}
+    .hero-content h1{font-size:2.5rem;}
+    .nav-menu{display:none;}
+    .timeline::before, .timeline-number{display:none;}
+    .timeline-card{max-width:100%;}
+}
+
+/* Curriculum Black Text Fix */
+.curriculum .section-title h2,
+.curriculum .section-title p,
+.accordion-header,
+.accordion-content ul li,
+.accordion-item h3,
+.accordion-item span{
+    color:#000 !important;
+}
+.accordion-item,
+.accordion-header,
+.accordion-content{
+    background:#fff !important;
+}
+.accordion-header i{
+    color:#f97316 !important;
+}
+
+
+.cta-section{
+    background: linear-gradient(135deg,#0f172a,#8daaea);
+    padding:70px 20px;
+    text-align:center;
+    color:#fff;
+}
+
+.cta-content{
+    max-width:900px;
+    margin:auto;
+}
+
+.cta-content h2{
+    font-size:42px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.cta-content p{
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:35px;
+    color:#e5e7eb;
+}
+
+.cta-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    border-radius:50px;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-call{
+    background:#ff9800;
+    color:#fff;
+}
+
+.btn-call:hover{
+    background:#e68900;
+    transform:translateY(-3px);
+}
+
+.btn-email{
+    background:#fff;
+    color:#4e4bf1;
+}
+
+.btn-email:hover{
+    background:#f4f4f4;
+    transform:translateY(-3px);
+}
+
+.contact-info{
+    margin-top:35px;
+    font-size:18px;
+}
+
+.contact-info p{
+    margin:8px 0;
+}body{
+
+font-family:Arial, Helvetica, sans-serif;
+background:#f6f8fc;
+
+}
+
+.faq-section{
+
+padding:80px 0;
+
+}
+
+.faq-image{
+
+max-width:420px;
+animation:float 4s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+.faq-heading{
+
+font-size:42px;
+
+font-weight:700;
+
+margin-bottom:30px;
+
+color:#0046d5;
+
+}
+
+.accordion-item{
+
+border:none;
+
+margin-bottom:15px;
+
+border-radius:15px;
+
+overflow:hidden;
+
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+.accordion-button{
+
+padding:20px;
+
+font-size:18px;
+
+font-weight:600;
+
+background:#fff;
+
+}
+
+.accordion-button:not(.collapsed){
+
+background:#0056ff;
+
+color:white;
+
+}
+
+.accordion-button:focus{
+
+box-shadow:none;
+
+}
+
+.accordion-body{
+
+font-size:16px;
+
+line-height:28px;
+
+color:#555;
+
+background:#fff;
+
+}
+
+/* ================= Fee Structure ================= */
+
+
+.course-overview{
+
+padding:90px 5%;
+background:#f8fafc;
+
+}
+
+.overview-container{
+
+max-width:1250px;
+margin:auto;
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:35px;
+
+align-items:start;
+
+}
+
+.highlights-card{
+
+background:#fff;
+
+padding:45px;
+
+border-radius:20px;
+
+box-shadow:0 10px 40px rgba(0,0,0,.08);
+
+}
+
+.badge{
+
+background:#f97316;
+
+color:#fff;
+
+padding:8px 18px;
+
+border-radius:30px;
+
+font-size:13px;
+
+font-weight:600;
+
+display:inline-block;
+
+margin-bottom:18px;
+
+}
+
+.highlights-card h2{
+
+font-size:38px;
+
+margin-bottom:15px;
+
+}
+
+.highlights-card p{
+
+color:#666;
+
+line-height:28px;
+
+}
+
+.highlight-grid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:25px;
+
+margin-top:35px;
+
+}
+
+.highlight-item{
+
+display:flex;
+
+gap:15px;
+
+align-items:center;
+
+padding:18px;
+
+border-radius:15px;
+
+background:#fff7ed;
+
+}
+
+.highlight-item i{
+
+font-size:28px;
+
+color:#f97316;
+
+}
+
+.highlight-item h4{
+
+margin-bottom:4px;
+
+}
+
+.bonus-box{
+
+margin-top:40px;
+
+background:#fff7ed;
+
+padding:25px;
+
+border-radius:15px;
+
+}
+
+.bonus-list{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:12px;
+
+margin-top:15px;
+
+}
+
+.bonus-list span{
+
+background:#fff;
+
+padding:10px 18px;
+
+border-radius:40px;
+
+font-weight:600;
+
+}
+
+.fee-card{
+
+background:#fff;
+
+border-radius:20px;
+
+padding:35px;
+
+text-align:center;
+
+box-shadow:0 12px 35px rgba(0,0,0,.08);
+
+position:sticky;
+
+top:110px;
+
+}
+
+.offer{
+
+background:#f97316;
+
+color:#fff;
+
+padding:8px 16px;
+
+border-radius:30px;
+
+font-size:13px;
+
+}
+
+.fee-card h1{
+
+font-size:55px;
+
+color:#f97316;
+
+margin:20px 0;
+
+}
+
+.fee-card ul{
+
+list-style:none;
+
+padding:0;
+
+margin:25px 0;
+
+text-align:left;
+
+}
+
+.fee-card li{
+
+margin-bottom:14px;
+
+}
+
+.enroll-btn{
+
+display:block;
+
+background:#f97316;
+
+color:#fff;
+
+padding:15px;
+
+border-radius:50px;
+
+text-decoration:none;
+
+font-weight:700;
+
+}
+
+.enroll-btn:hover{
+
+background:#ea580c;
+
+}
+
+.trust-section{
+
+padding:80px 5%;
+
+text-align:center;
+
+background:#fff;
+
+}
+
+.trust-section h2{
+
+font-size:38px;
+
+margin-bottom:10px;
+
+}
+
+.trust-grid{
+
+margin-top:45px;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+
+gap:25px;
+
+max-width:1200px;
+
+margin-inline:auto;
+
+}
+
+.trust-card{
+
+background:#fff;
+
+padding:30px;
+
+border-radius:18px;
+
+box-shadow:0 8px 30px rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+.trust-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.trust-card img{
+
+height:70px;
+
+object-fit:contain;
+
+margin-bottom:15px;
+
+}
+
+@media(max-width:900px){
+
+.overview-container{
+
+grid-template-columns:1fr;
+
+}
+
+.highlight-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.fee-card{
+
+position:static;
+
+}
+
+}
+</style>
+</head>
+<body>
+<nav>
+<div class="navbar-brand">
+<i class="fas fa-chart-bar"></i>
+<span>TechKraftiers</span>
+</div>
+<ul class="nav-menu">
+<li><a href="#home">Home</a></li>
+<li><a href="#enroll">Fees</a></li>
+<li><a href="#curriculum">Curriculum</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><button class="nav-cta" onclick="document.getElementById('registration-form').scrollIntoView();">Enroll Now</button></li>
+</ul>
+</nav>
+
+<section class="hero" id="home">
+<div class="hero-container">
+<div class="hero-content">
+<p style="color:var(--accent-orange);font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;">Professional Java Full Stack Training</p>
+<h1>AI Powered <span>Java Full Stack Development Program</span> in Techkraftiers</h1>
+<p>Master Java, Advanced Java, Spring Boot, Hibernate, REST APIs, MySQL, HTML, CSS, JavaScript and React with live projects and placement support.</p>
+<div class="hero-buttons">
+<button class="btn-primary" onclick="document.getElementById('registration-form').scrollIntoView();">Enroll Now</button>
+<a href="Java Full Stack Master Program.pptx" download class="btn-secondary"><i class="fas fa-download"></i> Download Syllabus</a>
+</div>
+<div class="stats-container">
+<div class="stat-card"><h3>1000+</h3><p>Students Trained</p></div>
+<div class="stat-card"><h3>95%</h3><p>Placement Rate</p></div>
+<div class="stat-card"><h3>4</h3><p>Months Duration</p></div>
+</div>
+</div>
+<div class="hero-image">
+<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAIIA8AMBIgACEQEDEQH/xAAbAAACAwEBAQAAAAAAAAAAAAAFBgIDBAABB//EAEMQAAIBAwMBBgMFBQUHBAMAAAECAwAEEQUSITEGE0FRYXEigZEUMkJSoRUjM3KxYoKSwfAHQ7LC0eHxJDRTYyY1c//EABkBAAMBAQEAAAAAAAAAAAAAAAECAwQABf/EACcRAAMAAgIBAwQCAwAAAAAAAAABAgMREiExBEFREyIyM3GBFJHR/9oADAMBAAIRAxEAPwBHEWa5ocDpwetae7rx1IRvY16yro85oYGjbSNEtrGEBbi9iS5vJAOSrcxx58gPiI8S3pRLSuyL3+nx3ct/a2/2lStpHI5Vnlz93keI54yefrX2qVW165YfdIjZcflMaY/SjnZ7VIdTWxsrvTpL69sRvtpWkbhy6gbto4QDaSSCPh9qS3SjckVM1kaoXbfsnqlxfXttbxrILQyKZTlEZxj4QT4nIxnA9cdaHhvezOrSR3Me4puWWNge7uIzwy8gZU8jOOtN+rTSWrX47QWTXenai6lWik3FcSHanecDChWIUAnnkiljtHqR1fVHuhF3SKuyMZP3AfhyCTg4xkDjPvRi6rz4EyRML7fIu9oNNi03VpIbdi9nKqzWrnq0TjcufUZI9xWFohjimDtYoVdFDfxBpqZ9u8k20FQEjBq2KlxKXtsyGPmpLFk8da2LAS3TIrXbafLdzx29rGXmkYKqDxP+Xjz4YNCqCkDlhwM1LGBk9KaO60/TiYre2h1G5U/vLi4BMQP9hOhA82znrgV6s8cnFxY6ZcJ5fY449vsybWH1pNv4FrJMvWxSY7yBEhPOCaJWej3V1bCdWUIQeg8qI6npVuLZr/Ty4hTH2i3kbc0OTwwbALJnAz1B9xRDszqUENlJBMCux85xjIIqkaZD1OS4x8oQmtbPg/E5bk4ApuvIULQOoxHJZwbDISAq90gz8PORg/MHigFyGWd1UIE3nB9M9aIafqe2BLK+QtAM91LEAWizyRgkBlJ5xkYPQ8kEtpPY9y8kLR9I1+/0++7K2MMFqircYkRHJxFs6jjnJ5A6dT0pBvoBBpOpLgbSYVX1fdn/AIQ9b3ubXTGWK81FpVEQdIYoXLAOA4wG+EEgjx+tBtU1WPUGSJYTb20ZJSNjySRyzN0J6dPIDwpMUzM8ULayXl5vrSAaqrnAGCfCrJbXZHluSfCtkMSyTL8IfnqKIz2odeBnAx7VrjHNLaBeZy0mLDRCNcjxqgREnjxo3NZlTnGBVIjVDkdajx09UWVJrcg42xC5NUMvNbbiQueaq7viutz4Ry37mYJmpbAvJ+fhVxXAo32bsYEiuNYvoVmitmWO2hf7s05yRuHiqgFiPHgedI60HryZbPs3cTW0d3qNxBpto4yklznfIPNY1yx98AetaV0HRzwvaKTcfzaawX6h8/pWy1tb3X9XCmZpbqd8yTMOFXxY+SgeHyFbIdE06WeOJO0Vg0jOFC9zKASTjqV6etJy77onzp/ikBbnsrd28Jue+hurIcd/bHcqk9AwIyp9x49ap7uG2UgYzTAlxfaLqDx7O6liYxyLImQ6+RHipH9R40M7Q6fDaXMV1ahhZXkZliVznuznDpnx2nofLFaYrXXyR7yPv/RnMdd3eCfXxrWIal9nyK87Z67QYiQ6xpEEsI3XmnxCKePxeEfccee0fCflVWiX50nUoLyONJNjYO4Z+E8Nt8MkZHlzQ+2M1ncxz20jRTR8pIp5U0X/AGnY3WP2ppzpKfvT2LhN3ujDbn2xXKn4fgheLb2j3V9Strm0tbDT7BLO1tyXVSSzhiTnDE8gjbn1ArJpunG+uGWVxFbQjfcT+ESeZ9fLzPzrV3+gxndHbapOV/BNJHGp+YBNeahdyaro8kMEMdqlm3etaQA7XjOBvOeWZT1zxhh5UyrS1Iv0W3ugDrl4NV1OW5RDHDgRwR/kjUbVH0AJ9SazQW+5hVhi49c1qgUKvrVNpLSH0WR2Xw4ojokJjttUnQ4kSJIlb8odviP+FSP71YGmcAKv3j09KLaDIm+aylcKt1HsVj0EgIZSfIEgg+9K+0B/BHTNOnuLlY7S0a4KkM0Y8RnxPh5U0dsJptZs4hp2lygWo3TSFUJjGCNmFJwfMeGKq7Japa6K939v3JcNIsZQxklVBO4nHqenpTBL2x0MEFJZGZjhgInHB6nGMGo5Kp2tIXHjjg1vyfO9GijGrW0ZBKXDCCUZ+8j/AAkfqf0pYciM7WOWHBIpps9lpczaj1tbFiYiwx3kv+7Uep4PoAaVY4jsO45OPGtHLbJ4k+JAyDwGa5GJcFUy2cKPMmrFj+EVu0G2WbWrFX+6LhGb+UHLfoDXOiqRLtHKr6/fY6RymIeoT4B/w0PKq9SdnnlaZ/vSsXb3JyakEVuB1rkwNFYR4XBhPPXHnTDoNreX8BuDb93AvDTTERx5/mJ5+Waq0LT4THLqOoxl7S3YIkYOO/kPIXP5QOT8q0Xs8+ozCe4bLIMIFGFjXyUeA9KaMlJ/ayGaZ12ghc6CZVO2907d5d+Rn2yMUu6not1YMPtMLRK/3W4If2YcGi9jdEqEk+8OK2G9NsjRyxieyk4mgf7rDzHkR5jnpVnyqdsy4b+nXFoRbiDadyjLHwqAhAHTcTzij2taYtldhYnMlrMglt5D1KEng+oII+VYo7bDdQR4EeNRiz0HILaFifXHFMKx7Oymlqv3ZLm5aT+Yd2B+lZGtxzmi+ioL3T7jSFI+0B/tNov/AMjYw6e5UAj1WhT7TFc7llmksx7M6lbJLNGiTxTziI4MkJyjj1AypPyp+1C3077BdxTxRjRFsw0TKqiJPylPEtnPOR+HjOCfm1jeTaddi4tyBIMqyOuQyngqw8R4Ef0xmidrqWh2l5DewWV8sqSb+471WijPQsueSeeAQOfSo5Ybe0LhyTK4sza1PNJpuiWs8zzXUNs7SkvuZd75VT5EBRx4VRf2pk7L23f/AAd3qEgQ+SmNCf1Aoh2h1b9u6lanT4bh5FTYHkUCSZic4wOAB4e5oV2knRWtNNhkEqWKsJZFOVaZjl8HyGAv92tGJ9TJJy3kqkSjh3NWprQhciq8bT1xUu8J6HNYuSPW0VGFqpkiIPNaS7VAsT1o7A0ZQuK06b9oTUIWtI+9l3YEeOHH4gfQjIPpmvDk+1FNNiWLTLi5TiSVxBu8lxub6/CPbI8aeSddLZVNpGlRXUoW4uZk3nYsSqoUeW85yfUDB65r1tJtZziynkWTjENyAAx8g4OM+hA96P8AZ/Ru+tru/ngM0cAASPftDeJPXwHh61dr2lxJBDdWtt9nWVivd79wZeof09vahtcuJLd8eXsJa6fMsjGWNlbO3a3UYqq4j+IQ8gnrz4U5X0ZMFvOw+IqY3PmVwAT64IHypYfmUu4zk8DyrTblISKddlqat+7WPUbUXRUbUm37JQP5sHP94VNbzSoculndTMeds06qo+i5P1FVN3Tph1rDKuSMr8AOBUWte4/FP2NrXg11RZXKwwSoxNkEXYiscZjP82Bgkk58cHj3TOyV9cR/aLt1sLUcGW54J9h4/pRXQdKtrayGr6pCsqk4tbYj+Kw8T6V5qd/cX07TXD73HRegHoBU034QaqZXZBNI7MWow7X9868FhiND9eavtouzcE4lj069hfa6ho59xAZSp6nHRjWNfhGXAB9TmpAKfLnyzT8F8kXmsrk7KWN4B+xdT3SkfDbXq7Gb0DAYJ9AKXr+wubG4a3vYHglXnawx8xjgjr0pgnTZgj7vjx/0opbXVvq9sNM1v4484guTy8LeGT5f6NB7keLVfkCnxHoekwMSQ0cszeTMXI/oo/ypi0mDQb/SFtt3d/Zk72ZmGJWkbjAwMkdOB1yvjQ++0q4s9DENzFmSwleIsBgNEx3K49MnB9+eaDWkz2dyJYmz1DLuKgqeoyOcf9qGuS6YlPhkfJdDfd9k+405bvT+5uZI874hEDvA6gE/FuGPPr4DpQrVZdPudDtiUS3vomw0SqSHQ8gn1xg889RRG27VQ2uliILM5U/DEMLtXA8egHJxgADaOMclHn1Jpb24mkSNe8k7wooIUEnJwD05zTYnbaVeDszhLceQlfQtN2atmK75Le8eJT5KyBsfUUCZHVeRg+NMes3s1na2OnqojlIM9ynirNjav820ZPvQN1MgJY5yaZuVvQ8KkkmYS7VWWk3BkYqwIIKnBBHQ1s7gAc1HuwOgzVPY73CC63a34H7ctZWn6G8tSFkf+dD8LH1BBqeNBHL6neMvjElkA+PcvihRj9MV4Y6l/YXEvvQam1CK30lZdAhkthK7W89xNg3A4BABGAoI3dPynmgUcMart8B0opokffyT6e3S7TanpKvMZ+Zyv9+qI4f/AB5U+KuLBU9DiL7uP/YWtrap4YjDv82YZNc2pXEg/wDUrb3SeKzW6kfoAf1rX2citpdTUXa7wqM0aHHxNxgY8fH6VfrcQOkW0l3Hs1HvWVi0aoXTnnA4wMise0utGj7mt7As2l22oIZNLRoLgAlrVjuDj/6z/wAp+VAtlHFLRSpJGSrIcqR1UitGrQ2IeLUZIpH+1oXMCEKgccPluTjPOAPHrRa0NFbF2K3kuJO5hieR36Kilj9KM2Nky2ctjNPCLp3EkMCtubIBDAkDAJGMDOSRWWe7uGjMUYWC2zgwwLtU/wA3Ut8yazWzrBcoznaoPJH/AGrtvyFpNaGvs7qh0qQhoWML473CfFwDjHh1NaL64Gqar3gllMeMRRsh+HgZH1qhNchkUGbZJkffZWDH3IP9asj1qNJggEMcTqQ0i5yvrkn6+mapH5cjPkh8OGynWF7u2WEOp7tW3erk8/5Clcx7vw13aXWZ4GMDIEkSXawByM5q2xmWa2DyOQ58hVbntIXGtSVJGAORitWm6eNQ1C3tQOJG+I46Acn9AayTZ3/C5I9RRvsSD+15ZCcmK2d1+qj/ADqNMuvknrd19p1Blh2rbwfuolA+EIvGf9eGKFMvAOevOPL0rRtyrD2H9K1aPZxXuqRW84YxvuyAcHhSR/SiukZKXJgh/hUk9KyG8iVsZxTNbaIbrQri5Al+0Mjvb7VJUhMZyfM8ge1AbTRLK7gstYJl/ZyWsr3yh/iWSPjAPhvLKQPemnJOxaxVojHeIxwre9awiquQN2eQfTxH+vSoaT2cMvZkai6T/bXDXCBVxGIVIUgnGMnLMPMCr7cMAuTkD/pR5J7Aoa/IL38850WDVoQpurE9xNvXKywtxhvMZI49zQfutPvf3lncx2UrfetrpyoU/wBl8cj0bBo3YKz6PrET/da1Yj3AOKStmRmpeH0aklUrYaGjXG0tLLZpEf8AeNdR7f0NCVv9B0bVIXklbUbrdt3Qr+4t/wC1z/FI6gdPWqJUxGx9KVrp1+1ICOS45/170ybfk5Y4nwhrntriK7nF5L30rt3hmByJQ3IYHxBBB/6VoSLLVLQiuoactjIf38YP2RicZzn90fQnp6586uiX4V3jBx5V2x9GK5QqMCsuwnrRiZUDAnpiqmkhA46/yVSXteRK/gFmKvDH4f1rZK245X+mKt0i0F7q1rBP/DdxvH9gct+gNJXQV8miwsIbWOC8vixdxvgtkO1mHg7H8K+IA5PHStcmqNJI7paWKF2LNi0Q5JPPLAms11PJeXMtxLjdI2cDwHgPkOK16DaQ3Wq20VzkQmQZ+HO4+A+dcuKW2Rqqp6TDkuiFFnZruELbf+4+Fv3XGePzfKoXcUGpm41eK87uzjwsxmjbfGwAGMDOQeD86hd68stpdrBFOkl3zMZZy6geIUeHl7YoZpmqrY2k9lcpK9tO4du4mMbhhjofHOB9Ky8mbOMmnUrSTTrjuZ9pJUMjL0ZT4/68qza1fRw6JpZkON7zlfbKj/I1rllm7Q3MSRIVVIwibn3bEH4nbz8SaUO1d9Deaii2jE2ltGIIP7QX8Z9ySfbFF10Njx7bCUE6yrlTkUK1CU9+oFS0qVY4T0z44qm8JefcvTNFUGp0HbFS0CEnHFTu3ECnMi/EvANVaWx+zjNeCyF9qAM7MlpAhkuHHUL0AHhkk4FUm+/BJz1tmK40657QwxXVqgaa0kWC5kLBFMYHwOWJAyBlSPRaPWei7bZUfUbDI8FlYqfmFxWKcXepSJDFGIbdDi3t4h8Kew8WOevU0yafo0hVYhPbCYBjKu8nZjHB49cVTJDntsjOZU9SgHeaVc2sYmcLJCD/ABomDr8yOnzrf2PYRa2kcn3Jo3j6Y8M/5VJWuNPuckd0+BkYyGU+fmDU5orOFodTt5WgjMo/cINxWQfFgZ4A4ByTx61F7RWWmdJb920iP95SQfcGq4LqaxldrULvIxuZQSPbPSi2pKl5AmqWo/czgd6v5G9fegkuFB3dPCmVJrWiNS5eyNzqt/apFJDctH9mUIiKcLgea9D6+NJyaneCyu7BX22l1L3skSrwGByMfRfoKPahK5iYfSlZA3eP71bHK90Z8lP2Ywaf2i1Q6hbyi6dViQRrAuREqgbQNnT60agQBVx0H6eFKemkC5Xfyc8CmuF2klS2hUvNIQFUeJ/8ePhQyaXg7G21oKNcDTOzWrXsn3TGIV9WY4/5hSJBqqytx08qL/7RdUiigh7PW0m/uD3ly6/ikPh+pPpnHhSPZyGFt2eBUl32bdaSQy3E8JibzpXuiDdIR+bNE/tKyAtQxf3l3uHRR/WmlB2M2lj/ANKfbzxTfLBBiG4v43e9dA0kKNtBPgzHwJGMgY8+M4pd7IvAbyBZeVTfKU89ilv+WmK0SbULnbDiWaQliCQM+OcmkfnsFNpdFbvCc7rCy2ez5+u7NZLrTIJ4mlsNyyoCzW5O7KjqVPU48jz41utLKe/1N7GCMiWNiJS44jHmfD28/rUtSn062v4otHmZ5bc/HJnKs4Ph+ufCmdL2JLmu2KxXAPAAHXPhRXs/bXEWoWt88Oy0V8SSyEIm0ggncSB0PTrU9bv7fSr+WK0tII8kMruO8YbgG+HdkL18B86WrrtGs8xa5meZ84zI5J/8Um2aOKQ2xaYu+9iu7qOCS1/3bnmU85A59PXqKZ45NMtFnitbi2SL7dC6qJQRgbMnr6Gk/T9Ts9Uto4r2QRTINsVyVyrqOgcDnjzHpW9NIupBmERzJ4SQzKwP6iu89NktOfCKBLolwC4urqyY9UliMqj0DLzj3FZJTokB3S6rNOP/AI7e1IJ+b4H6GhD58KyzZAyaxqqPQWOQ/cawJbGS10+3Fnav98Ftzzfzt/kKT7skOduMVuFwRGVFC52LOSadPYynRfayMBUprkq2DWaFqruWwc1VEn5GLRLou+zwo3eOsHZ+5lQ4M16qMfMIhYD6nPypJ07UBbuGPgaZdNvBrFlfaWuTcNi6tVH43QHeo9SpOPannySyLcMKdj7w3sl1O+5UtIQylPvd7u+DHBHg3UGnqGOV7iOC4ZpYnV4xs2jghdwBULwOfDz9K+O6Hqh0jVY5FINvL8MqbmAYePCkZ9jwa+m6TdW8upW17HPHJ9o71RK+yHch2EsoC7uCSMMfw8nJquXdeTFg0lpfJl7f3E0enxX4gRYkZYlnMgZpgQTngdOPHHJPHiU3S7+WfRdaZgcRpDMuegIkA/oxq7tTqbamyadYy/arKyZgsyqy7jngck5CjgH38KEXcp0nso0MrETatOpiUdRBEdxc+7bR7AnwoqNY/uG+pyy/aMHZvtM+nx5lQTWsvEsR6MPMeGfejM9gmpwG87N3KXUZ+9bkgSRemCf649Ca+Yx322EKmCMdKxNql3Z3AuLK5kt5h0eNyre2f+tTSae0aLSpaY73j3EZMV7A8TD8Lgqc+xxS+boZ2hFBBOWZv+9bbT/abr9vBtuWtbxcdLiHGf8ACRVg/wBqOrbQ1vpelQP+cQOT/wAVVWSvgzP0y+TRovZ/V9RnSS2tHSPOe+lXu0A9CRk/LNF9Z1y27L6co0SVb6/ut0TaghVo4SuNyLjPxcjg+5z0pF1ztdrmuQvFqF9KYm57qIbEPuF6/Mmruy0CfYL59SJTR2IU4xva4AypizxuAJ3E8bWwc5FLW2+x4xzjWzJIwkXduZnb4nZjkt65rKz84ipnbVNOih22WlWSgdDcp37t7l+PoBUYZNMvMi/0+G3J4WfTwY2T3Qna3ywceNNxO+tItxymHIPQ9aY9H0m1vbHvGlaOZuSc5FAdZ0+awvkjcpLA6iSG4j+5MmTgjy5BBB6EEVR9umtX3QvtboMHg1SNT5EzTVz9j0G7eYaF2jtpLqZXtYy0cu3qEdSjnHorZ+VE7q/v9Eu2jMrrLA2VkQ8MPwsvmCDmk66uHuVzMQznqwHWtlr2hW3so9P1e0+3WkYxGVk2TQD+w+CCPHaQRnypG5dbS6GeOuC2+x21f/aHfahpAtIYUtLiUYu7iNvikA4+Hy/0BQDs60s96tvG2xSDvkY/DCg5Z28gAMn6UNXU+zIUsX1vBH8M28AP+Pf+u2pX+pxX3Zi4XQrd7KGGUftCEyd5JPGcCORnwPhD5BUDAJU854G4S6B9PJT3XsQ7Q69+2NUuriDK27viIHqIxwufXAFL8smZBzmqfiA4ORXhBPJpUi++h17NXi9ysZ64pkVRtBNfP9CmVLlQxxT4Lq2SNSZAD6mh9PddHc1rsySNWOZuKuZuKyzvXnI9FGSSXHw1bp+nXGpzOluEVI13SzSNtSFfNj/o+VZpnGCxPTypj1VW06KLRYVOLcBpyg/i3DAFj67fujywapC2xctcUYxZ6Hartln1C9cdWi2QIfbcGP1x7VXLY6LeKUtr26spvw/bAJIj7sgBUZ8dpHtTf2U7IXdzFFqE0ULRvJBJDublQsylxj1QMPXNYO2fY++sLddRihhW3iiUTiNyWMhkbnGOeGT6GtC14MVVfkR5tKv7bUxpptWkviPhjTDb16h1PQrjndnAGckYrQmoQaG4XT5ku9TC/wDvFw0dv/8AxBHxn/7CCPyg/eogl1Ne9mtU0lpnDW8JuYznGY05libx2kHfjplPWkcSfHtP6U7+AzfJdjx+0NI18Zv5hpWpnl5e7LW07fmO3mNj4+Fa7fRWx/8AtNFdOpkXUI8N688/pSIkmflUmww54PgfKnVVJG8M0fTPtei2NlcC2uIdSvLe3ac2ls/7uQLjOZDwcDLEDnANfP8AU9Vn1i8lu71w0zAAgDCxqOiqPBR4CsthqU2n30N1Djv4HDpuHwufEHzBHGPImtGt2Fta3qyWYYWdzGJ7RieQjZ+E+qkMh9Vz401W2+xcWCcSfFGZd8a7kYkeANUTOzHDDBxXpaVWX4S6eG0f5Vzyq7Y3D2NcyjMsknh5VJbwBcEZxVzW6+RHB6Goi2XI69fFjS9ndFP2w53Igx456U76zAYZrTSkO1LC1jVfAGRlDyN82Y59hSkbcA8DxxnNOWqE38Flq8B7xbuBElK9EnjUI6+nQN7EVSN7WyHqH9j0NuiWWraP2Ts7nQLBxqF7KzTT9xvZYh90AEHCng1i7bafcmHS9SuLI2lxdxMt4VTaO9HTjwZhk/L0plvriy1P/Z3a6Ut9ZrdG1t1ZJrju9rLtJB8fA1Z29vrDUtEt4bW6imdLhWZYpN5A2sM/rU8ap5E2vc7I4+m0n4QjxWtvqHZi4hcAGykSWI+KbztcexO0+4NIN5CY7lt7ZC8Jz1p6vYnsez0274X1CVBGnj3cZJZvYsVH900nXcRDsXz8615e5aRL06qWtvoHvNgZxjFZpH3Lu8+a0Sx7jmuNvmPNZ5ho1ujIvxDNENFu306/S5SNZlwUmgc/DNEwwyH0IJ/Q+FYgAgOfOmTstaWyWdxrepxCazt3EMFselzORna39hRy3nwPGjoHPXZbJ2Nu3kM1i8I0mTD219ezLEjxkZAPiWA4IA6g14eyhJ2x6/oZP5DNKo/xGMA/UVtFzqPaHUOVa7nK54IVY0H6Kg+QFWzaRIUYxX+lTSKpJihvo9+AMnGSAfkTRUSvNEXnp+JAd1ouo6OyNfW/dxyfwpUYSRSezqSp9qyyy3Dcb2xTa0OrdlooF1GzzY36b5LKf7sy+II6o44ORyOM45FL3aG1TSb5PszPPp91GJrOVhhihJyrf21III9M+NaMN411X+xW7rwMTwTY4WssltOfw02BQeCmKmLdW/DXmr0T9mel/k6Ej7LOriQJnaQSPPBpvu4vs3a67uJl/dvcPIkneSJtD/ErZj+LofDzrYtinTABPSjENnDe28MLyoLiEbEJP308FPqOgp16SsfbI5PUqgjqul3evdnNOXTLmP4d7GSZ5W3DY6jkkOeSOT0684wb7+3ksNC1N7+cxLJcpIrJNKpVcRrjMfxDkHgf9ayWFkLCUo8vVkO1jtwFdW6fKvLrTDfvHtfIjj2AZyCNxOT5daX6NJkv8vH/AGfPI7NpNX1a+gh2QpZXTfxHfvC0bIGy/wAXxM4PPPNIy6JdIuO7yR+lfdZ9GiSza0gnX94Q0zj8WOijyGeffFDJOzyjJV1PlVVip+BJ9Rjnpnx5dKvS3Taf61p/Y14Y9zx4OfrX1E6KwbkqRUJdHuX4AUjHFUXp69wv1EfJ8vGjTvw6ZHlTFb6FjQI4NZ+0FRN31kkGO+2MuHBJyFRiEIPJyCcHNNtlosz38EU0atC0iiTH5c8/pmr3sL27uHleIGSVicL/AE9hx9KH06XTQKzyu0xKTS9JKLG1jqUQBwZBdo7D5GMA+wI9+lDtX7PS2myVWS6tJGxHMFwQ35WU/dbGDg5B4wTivr19apDFa6W0D3dmi5cqQjrI2eV6cjJ4PHOKCtokyLe2ud8MsDN5bXQFlJHmCNvsTSrbXSFWRJ6dI+WrpmR9119ATUv2WOCe86/mNOjaBqCnaAgbcFwT44zUDo14kYdjGBt3D2zzWiMbaW0c8sd6oBW+ixhATGz58SelGNJlfTRJCLdZrOXBmgc4DY6MCOVb1H60Qe2ljwhZMjA4NZ5IZdvBXPnmt30p+DG+VPp9BG2tLC6G62vZIs/huICSP7yDB+gqwwWmnkys8t+4HEYQxR/Mk5PyGfWhsP2uIZWVfrVdw2oSqVDqc/2qSoyNe+gLFjl7/wCgjtFc3V3ctcTSAnAUBRhUUdFUeAFLN2sjjLdKaJdD1OdssFbP9qs79ktZblbYEejCsmTFk34NS9TgnzSE9nlBx5V4ZJNu2mpuyOs+NmT7MKpk7KasnLWjD51NYsj9h16v078UhUMUv5SfGnG9iMPZjs3bqOGgmuGx4u8pB+gVR8qxNod8gIki6+BNMVvYy3nZW3QYE+lSurAc5gkO4N8m3A+9M8GVfc0wZM0VLUs902KK10SJJUMkP2STU7uMcC5KzdzDGxHOxT8WPU+OKMXe2yjnGoSxX66eyrJZpZQxpG4dQHAUBljUsAFyGkPgFyayaPKoto7WeaBJ7cOsZuG/czwyffic/h5+JTnHJzjg0WkgngggZxOIoGDQDUdSia2hI+63wjdIF8AfTrU6xWnpoE5Za67Frtibm6KXF9cSXV5De3NjLK3AkERUqyqOF4fGBjp55oPrkZl7D2UkgO+11OSGMnwR41cj6rRnWJ7W4ENvDLLLBBvbvmGGnlc5kkI8MkAY64Azzmq+08drY2NhosofvYt13cqPwyOBtU+oQDP81VnE9SmLGRc3SGtOlWCva6rIuz0dKjk5bn8NdXUa8AQa7O3E0kLJJNI6g8BmJArJ2ouZw/dCaQRkcpvOPpXV1YH+wuvwBId933m+tQaSQNw7fWurq0z4JV5JLLJj+I/+I1730o6Sv1H4jXV1UkhkL9MmlOqWWZX/AIw/EfMUc7Is0moOZGLFUJG45xxXV1Jn/F/wTn9kkO1cjxaziJ2QFFJCnGTk80MknmNxeZlc4huMfEfyNXV1LH61/Atfu/sWpriYO+JpPvD8Rqt5pTGcyufdjXldV69jRJmu5ZNw/eP0/MazPLJj+I31rq6pW+ys+CiSWTH8R/8AFXd9LtH7x/8AEa6uq2PySo0xXE4AxNIP7xrTHd3K8C4mHs5rq6t0nk+oXbNkV5cnrcTf4zVzXM7D4ppD7ua6uq0paPPZWxLRZY5O7xrb2WH/AOTW6/hcurD8w29D6V7XUc/6a/g0+m/YgVqEaLcSKqKFEjAADgDNDnA3PwK6urNX4ll5YX7GRpJ2isRIisA5IDDOCAeaU712ku5pJGLO0zlmY5JO48k11dWGvzf9HoYPwR//2Q==" alt="Analytics Dashboard">
+</div>
+</div>
+</section>
+
+<!-- ================= COURSE HIGHLIGHTS ================= -->
+
+<section class="course-overview" id="enroll">
+
+    <div class="overview-container">
+
+        <!-- Left Side -->
+
+        <div class="highlights-card">
+
+            <span class="badge">Most Popular Program</span>
+
+            <h2>Java Full Stack Development</h2>
+
+            <p>
+                Become a Job Ready Java Full Stack Developer with Live Projects,
+                Industry Tools and Placement Assistance.
+            </p>
+
+            <div class="highlight-grid">
+
+                <div class="highlight-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <div>
+                        <h4>Live Classes</h4>
+                        <p>Instructor Led Training</p>
+                    </div>
+                </div>
+
+                <div class="highlight-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <div>
+                        <h4>5+ Projects</h4>
+                        <p>Industry Level Projects</p>
+                    </div>
+                </div>
+
+                <div class="highlight-item">
+                    <i class="fas fa-briefcase"></i>
+                    <div>
+                        <h4>Placement Support</h4>
+                        <p>Interview Preparation</p>
+                    </div>
+                </div>
+
+                <div class="highlight-item">
+                    <i class="fas fa-certificate"></i>
+                    <div>
+                        <h4>Certificate</h4>
+                        <p>Course Completion</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bonus-box">
+
+                <h3>🎁 Bonus Included</h3>
+
+                <div class="bonus-list">
+
+                    <span>Resume Building</span>
+                    <span>LinkedIn Profile</span>
+                    <span>GitHub Portfolio</span>
+                    <span>Mock Interviews</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Right Side Fee -->
+
+        <div class="fee-card">
+
+            <span class="offer">LIMITED OFFER</span>
+
+            <h3>Course Fee</h3>
+
+            <h1>₹35,000</h1>
+
+            <p class="emi">
+                EMI Starting From
+                <strong>₹8,750 × 4 Months</strong>
+            </p>
+
+            <ul>
+
+                <li>✔ Live Training</li>
+                <li>✔ Lifetime Notes</li>
+                <li>✔ Projects Included</li>
+                <li>✔ Placement Assistance</li>
+
+            </ul>
+
+            <a href="#registration-form" class="enroll-btn">
+                Enroll Now
+            </a>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="curriculum" id="curriculum">
+<div class="section-title">
+<h2>Complete <span>Java Full Stack Curriculum</span></h2>
+<p>A structured program built around practical modules and business-ready deliverables.</p>
+</div>
+<div class="curriculum-accordion">
+<div class="accordion-item">
+<button class="accordion-header"><span>Java Fundamentals</span><i class="fas fa-plus"></i></button>
+<div class="accordion-content"><ul><li>Introduction to Java<li> Basic Programming</li>
+</li><li> Arrays,Methods,OOPS</li><li>Exception Handling</li></ul></div>
+</div>
+<div class="accordion-item">
+<button class="accordion-header"><span>Advanced Java</span><i class="fas fa-plus"></i></button>
+<div class="accordion-content"><ul><li>JDBC,Servlet,JSP </li><li></li><li>Multithreading</li><li>File Handling</li></ul></div>
+</div>
+<div class="accordion-item">
+<button class="accordion-header"><span>Spring Boot</span><i class="fas fa-plus"></i></button>
+<div class="accordion-content"><ul><li>Basics,
+Spring Boot Introduction,
+Project Setup,
+Maven,
+Gradle</li><li>REST API,Validation</li><li>Database Integration,security,Testing</li><li>Deployment</li></ul></div>
+</div>
+<div class="accordion-item">
+<button class="accordion-header"><span>Hibernate & JPA</span><i class="fas fa-plus"></i></button>
+<div class="accordion-content"><ul><li>Introduction to ORM,
+Hibernate Architecture,
+Configuration,
+Entity Mapping,
+Annotations,
+CRUD</li><li>Relationships:
+
+One-to-One,
+One-to-Many,
+Many-to-One,
+Many-to-Many</li><li>Caching,
+Transactions</li></ul></div>
+</div>
+<div class="accordion-item">
+<button class="accordion-header"><span>Frontend Development</span><i class="fas fa-plus"></i></button>
+<div class="accordion-content"><ul><li>Bootstrap,JavaScript</li><li>HTML5,CSS3</li><li>React.js,Version Control</li></ul></div>
+</div>
+<div class="accordion-item">
+<button class="accordion-header"><span>Full Stack Capstone Project</span><i class="fas fa-plus"></i></button>
+<div class="accordion-content"><ul><li>Student Management System</li><li>Library Management System</li><li>E-Commerce Website like...</li></ul></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="workflow">
+<div class="section-title">
+<h2>Professional <span>Development Workflow</span></h2>
+<p>Every step of the workflow is covered in training for real business impact.</p>
+</div>
+<div class="timeline">
+<div class="timeline-step"><div class="timeline-number">1</div><div class="timeline-card"><h3>Requirement Analysis</h3><p>Understand business requirements and prepare project architecture.</p></div></div>
+<div class="timeline-step"><div class="timeline-number">2</div><div class="timeline-card"><h3>UI/UX & Frontend Development</h3><p>Build responsive interfaces using HTML, CSS, JavaScript and React.</p></div></div>
+<div class="timeline-step"><div class="timeline-number">3</div><div class="timeline-card"><h3>Backend Development</h3><p>Develop APIs and business logic using Java, Spring Boot and Hibernate.</p></div></div>
+<div class="timeline-step"><div class="timeline-number">4</div><div class="timeline-card"><h3>Database Integration</h3><p>Connect applications with MySQL databases and manage data securely.</p></div></div>
+<div class="timeline-step"><div class="timeline-number">5</div><div class="timeline-card"><h3>Testing & Deployment</h3><p>Perform testing, debugging and deploy applications to servers.</p></div></div>
+<div class="timeline-step"><div class="timeline-number">6</div><div class="timeline-card"><h3>Maintenance & Scaling</h3><p>Maintain, optimize and scale applications for production use.</p></div></div>
+</div>
+</section>
+
+<section class="section" id="tools">
+<div class="section-title">
+<h2>Tools &amp; <span>Technologies</span></h2>
+<p>Master industry-standard Java Full Stack technologies used by top software companies.</p>
+</div>
+<div class="tools-grid">
+
+    <div class="tool-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" alt="Java">
+        <h4>Java</h4>
+    </div>
+
+    <div class="tool-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML5">
+        <h4>HTML5</h4>
+    </div>
+
+    <div class="tool-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS3">
+        <h4>CSS3</h4>
+    </div>
+
+    <div class="tool-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="JavaScript">
+        <h4>JavaScript</h4>
+    </div>
+
+    <div class="tool-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/1126/1126012.png" alt="React JS">
+        <h4>React JS</h4>
+    </div>
+
+    <div class="tool-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/919/919836.png" alt="MySQL">
+        <h4>MySQL</h4>
+    </div>
+
+    <div class="tool-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/919/919833.png" alt="Spring Boot">
+        <h4>Spring Boot</h4>
+    </div>
+
+    <div class="tool-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/919/919851.png" alt="Hibernate">
+        <h4>Hibernate</h4>
+    </div>
+
+    <div class="tool-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968853.png" alt="Git">
+        <h4>Git</h4>
+    </div>
+
+    <div class="tool-card">
+        <img src="https://cdn-icons-png.flaticon.com/512/919/919847.png" alt="Maven">
+        <h4>Maven</h4>
+    </div>
+
+</div>
+</section>
+
+
+
+
+<!-- ================= TRUST SECTION ================= -->
+
+<section class="trust-section">
+
+    <h2>Trusted & Industry Connected</h2>
+
+    <p>Training aligned with industry standards and hiring ecosystem.</p>
+
+    <div class="trust-grid">
+
+        <div class="trust-card">
+            <img src="iso.jpg">
+            <h4>ISO Certified</h4>
+        </div>
+
+        <div class="trust-card">
+            <img src="msme.jpg">
+            <h4>MSME</h4>
+        </div>
+
+        <div class="trust-card">
+            <img src="ugcRecognized.jpg">
+            <h4>UGC</h4>
+        </div>
+
+        <div class="trust-card">
+            <img src="naac.jpg">
+            <h4>NAAC</h4>
+        </div>
+
+        <div class="trust-card">
+            <img src="aict.jpg">
+            <h4>AICTE</h4>
+        </div>
+
+        <div class="trust-card">
+            <img src="asenturee.jpg">
+            <h4>Accenture</h4>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Call To Action Section -->
+<section class="cta-section">
+    <div class="cta-content">
+        <h2>Ready to Start Your Journey?</h2>
+        <p>
+            Kickstart your digital career with TechKraftiers Digital.
+            Join our industry-focused training programs and get expert guidance.
+        </p>
+
+        <div class="cta-buttons">
+            <a href="tel:+917738415492" class="btn btn-call">
+                📞 Call Now
+            </a>
+
+            <a href="mailto:info@techkraftiersdigital.in" class="btn btn-email">
+                ✉ Email Us
+            </a>
+        </div>
+
+        <div class="contact-info">
+            <p><strong>Phone:</strong> +91 7738415492</p>
+            <p><strong>Email:</strong> info@techkraftiersdigital.in</p>
+        </div>
+    </div>
+</section>
+<section class="section" id="contact">
+<div class="section-title">
+<h2>Get In <span>Touch</span></h2>
+<p>Speak with our admissions team and reserve your seat for the next analytics batch.</p>
+</div>
+<div class="contact-container">
+<div class="contact-card"><i class="fas fa-location-dot"></i><h3>Location</h3><p>Haware's Centurion Mall, F-01A-28, First Floor, Nerul East, Navi Mumbai</p></div>
+<div class="contact-card"><i class="fas fa-phone"></i><h3>Phone</h3><p>+91 7738415492</p></div>
+<div class="contact-card"><i class="fas fa-globe"></i><h3>Website</h3><p>techkraftiersdigital.in</p></div>
+</div>
+</section>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Full Stack Java FAQ</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<section class="faq-section" id="faq">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<!-- Left Image -->
+
+<div class="col-lg-5 text-center">
+
+<img src="faq.jpg" class="faq-image img-fluid" alt="FAQ">
+
+</div>
+
+<!-- Right FAQ -->
+
+<div class="col-lg-7">
+
+<h2 class="faq-heading">
+Frequently Asked Questions
+</h2>
+
+<div class="accordion" id="javaFAQ">
+
+<!-- 1 -->
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#faq1">
+
+What is Full Stack Java Development?
+
+</button>
+
+</h2>
+
+<div id="faq1"
+class="accordion-collapse collapse show"
+data-bs-parent="#javaFAQ">
+
+<div class="accordion-body">
+
+Full Stack Java Development covers frontend technologies
+(HTML, CSS, JavaScript, Bootstrap),
+backend development using Java,
+Spring Boot, Hibernate,
+REST APIs and MySQL database.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 2 -->
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#faq2">
+
+Who can join this course?
+
+</button>
+
+</h2>
+
+<div id="faq2"
+class="accordion-collapse collapse"
+data-bs-parent="#javaFAQ">
+
+<div class="accordion-body">
+
+Students, Freshers,
+Working Professionals and
+Anyone who wants to become
+a Java Full Stack Developer.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 3 -->
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#faq3">
+
+Do I need programming knowledge?
+
+</button>
+
+</h2>
+
+<div id="faq3"
+class="accordion-collapse collapse"
+data-bs-parent="#javaFAQ">
+
+<div class="accordion-body">
+
+No.
+
+We start from Core Java basics
+and gradually move to Advanced Java,
+Spring Boot and Live Projects.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 4 -->
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#faq4">
+
+Will I work on Live Projects?
+
+</button>
+
+</h2>
+
+<div id="faq4"
+class="accordion-collapse collapse"
+data-bs-parent="#javaFAQ">
+
+<div class="accordion-body">
+
+Yes.
+
+Students develop multiple
+industry projects including
+
+✔ Employee Management
+
+✔ Student Portal
+
+✔ Banking Application
+
+✔ E-Commerce Website
+
+✔ REST API Project
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 5 -->
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#faq5">
+
+Do you provide Placement Assistance?
+
+</button>
+
+</h2>
+
+<div id="faq5"
+class="accordion-collapse collapse"
+data-bs-parent="#javaFAQ">
+
+<div class="accordion-body">
+
+Yes.
+
+Resume Building,
+Mock Interviews,
+Soft Skills,
+Internship Guidance
+and Placement Assistance
+are provided.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- 6 -->
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#faq6">
+
+Will I receive Certificate?
+
+</button>
+
+</h2>
+
+<div id="faq6"
+class="accordion-collapse collapse"
+data-bs-parent="#javaFAQ">
+
+<div class="accordion-body">
+
+Yes.
+
+Industry Recognized
+Course Completion Certificate
+will be awarded after successfully
+completing the program.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
+
+<section class="section" id="registration-form">
+<div class="section-title">
+<h2>Book Your <span>Free Demo Class</span></h2>
+<p>Fill out the form below to book a free introductory session.</p>
+</div>
+<div class="form-card">
+<form class="form-row">
+<input type="text" placeholder="Full Name" required>
+<input type="tel" placeholder="Mobile Number" required>
+<input type="email" placeholder="Email Address" required>
+<select required>
+<option value="">Select Qualification</option>
+<option>10th Pass</option>
+<option>12th Pass</option>
+<option>Graduate</option>
+<option>Post Graduate</option>
+<option>Working Professional</option>
+</select>
+<textarea placeholder="Message" rows="5"></textarea>
+<button type="submit">Register For Free Demo</button>
+</form>
+</div>
+</section>
+
+<footer>
+<p>© 2026 TechKraftiers Digital. All Rights Reserved.</p>
+</footer>
+
+<script>
+const accordionItems=document.querySelectorAll('.accordion-item');
+accordionItems.forEach(item=>{
+    const header=item.querySelector('.accordion-header');
+    header.addEventListener('click',()=>{
+        item.classList.toggle('active');
+    });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechKraftiers Digital - Data Science Pro</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+:root{
+    --primary-bg:#ffffff;
+    --surface:#ffffff;
+    --surface-light:#fff7ed;
+    --accent-orange:#f97316;
+    --text-light:#222222;
+    --text-muted:#666666;
+    --border-light:rgba(249,115,22,0.15);
+}
+html{
+    scroll-behavior:smooth;
+}
+body{
+    font-family:'Poppins',sans-serif;
+    background:#ffffff;
+    color:var(--text-light);
+    overflow-x:hidden;
+}
+nav{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:1000;
+    background:rgba(238, 236, 245, 0.95);
+    backdrop-filter:blur(14px);
+    padding:1rem 5%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 20px 60px rgba(0,0,0,0.4);
+    border-bottom:1px solid var(--border-light);
+}
+.navbar-brand{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:1.6rem;
+    font-weight:800;
+}
+.navbar-brand i{
+    color:var(--accent-orange);
+}
+.navbar-brand span{
+    background:linear-gradient(135deg,var(--accent-orange),var(--accent-orange));
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+.nav-menu{
+    display:flex;
+    list-style:none;
+    gap:2rem;
+    align-items:center;
+}
+.nav-menu a{
+    text-decoration:none;
+    color:var(--text-light);
+    font-weight:500;
+    transition:0.3s;
+}
+.nav-menu a:hover{
+    color:var(--accent-orange);
+}
+.nav-cta{
+    background:linear-gradient(135deg,var(--accent-orange),var(--accent-orange));
+    color:#fff;
+    border:none;
+    padding:12px 24px;
+    border-radius:50px;
+    cursor:pointer;
+    font-weight:600;
+    box-shadow:0 4px 15px rgba(249,115,22,0.3);
+}
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    padding:140px 5% 80px;
+}
+.hero-container{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:4rem;
+    align-items:center;
+    max-width:1200px;
+    margin:0 auto;
+}
+.hero-content h1{
+    font-size:3.5rem;
+    line-height:1.2;
+    margin-bottom:20px;
+    font-weight:800;
+}
+.hero-content h1 span{
+    color:var(--accent-orange);
+}
+.hero-content p{
+    font-size:1.1rem;
+    line-height:1.8;
+    color:var(--text-muted);
+    margin-bottom:30px;
+}
+.hero-buttons{
+    display:flex;
+    gap:20px;
+    margin-bottom:40px;
+    flex-wrap:wrap;
+}
+.btn-primary,
+.btn-secondary{
+    padding:16px 30px;
+    border:none;
+    border-radius:50px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+    text-decoration:none;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+}
+.btn-primary{
+    background:linear-gradient(135deg,var(--accent-orange),var(--accent-orange));
+    color:#fff;
+    box-shadow:0 4px 20px rgba(249,115,22,0.4);
+}
+.btn-secondary{
+    border:2px solid var(--accent-orange);
+    background:transparent;
+    color:var(--text-light);
+}
+.btn-primary:hover,
+.btn-secondary:hover{
+    transform:translateY(-5px);
+}
+.hero-image img{
+    width:100%;
+    border-radius:20px;
+    box-shadow:0 25px 60px rgba(168,85,247,0.2);
+    border:1px solid var(--border-light);
+}
+.stats-container{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+.stat-card{
+    background:rgba(255,255,255,0.04);
+    padding:20px;
+    border-radius:15px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(0,0,0,0.3);
+    border:1px solid var(--border-light);
+}
+.stat-card h3{
+    font-size:2rem;
+    color:var(--accent-orange);
+}
+.section{
+    padding:100px 5%;
+}
+.section-title{
+    text-align:center;
+    margin-bottom:4rem;
+}
+.section-title h2{
+    font-size:3rem;
+}
+.section-title span{
+    color:var(--accent-orange);
+}
+.section-title p{
+    color:var(--text-muted);
+    margin-top:10px;
+}
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:24px;
+    max-width:1200px;
+    margin:0 auto;
+}
+.card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border-light);
+    padding:32px;
+    border-radius:24px;
+    transition:transform .25s ease, border-color .25s ease;
+}
+.card:hover{
+    transform:translateY(-10px);
+    border-color:var(--accent-orange);
+    background:rgba(168,85,247,0.05);
+}
+.card h3{
+    margin-bottom:14px;
+    color:#fff;
+}
+.card p{
+    color:var(--text-muted);
+    line-height:1.8;
+}
+.curriculum{
+    padding:100px 5%;
+    background:rgba(30,13,69,0.4);
+}
+.curriculum-accordion{
+    max-width:1100px;
+    margin:auto;
+}
+.accordion-item{
+    background:var(--surface);
+    border-radius:18px;
+    margin-bottom:20px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+    border:1px solid var(--border-light);
+}
+.accordion-header{
+    width:100%;
+    background:rgba(255,255,255,0.01);
+    border:none;
+    padding:24px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:1.25rem;
+    font-weight:600;
+    cursor:pointer;
+    color:#fff;
+    transition:0.3s;
+    font-family:'Poppins',sans-serif;
+}
+.accordion-header:hover{
+    background:rgba(168,85,247,0.1);
+}
+.accordion-header i{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.05);
+    color:var(--accent-orange);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1rem;
+    transition:0.3s;
+}
+.accordion-content{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height 0.4s ease;
+    background:rgba(18,7,43,0.6);
+}
+.accordion-content ul{
+    padding:20px 35px 30px;
+}
+.accordion-content ul li{
+    margin-bottom:12px;
+    color:var(--text-muted);
+    font-size:1rem;
+    list-style:none;
+    position:relative;
+    padding-left:22px;
+}
+.accordion-content ul li::before{
+    content:'•';
+    position:absolute;
+    left:0;
+    color:var(--accent-orange);
+    font-size:1.3rem;
+}
+.accordion-item.active .accordion-content{
+    max-height:400px;
+}
+.accordion-item.active .accordion-header i{
+    transform:rotate(45deg);
+}
+.timeline{
+    position:relative;
+    padding:40px 0;
+    max-width:1000px;
+    margin:0 auto;
+}
+.timeline::before{
+    content:'';
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:50%;
+    width:2px;
+    background:linear-gradient(to bottom,var(--accent-orange),var(--accent-orange));
+    transform:translateX(-50%);
+}
+.timeline-step{
+    position:relative;
+    display:grid;
+    grid-template-columns:1fr;
+    margin-bottom:48px;
+}
+.timeline-card{
+    position:relative;
+    max-width:45%;
+    padding:24px;
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border-light);
+    border-radius:24px;
+}
+.timeline-step:nth-child(even) .timeline-card{
+    margin-left:auto;
+}
+.timeline-number{
+    position:absolute;
+    top:24px;
+    left:50%;
+    transform:translateX(-50%);
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    background:var(--surface-light);
+    border:2px solid var(--accent-orange);
+    display:grid;
+    place-items:center;
+    color:#fff;
+    font-weight:800;
+    z-index:2;
+}
+.tools-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:22px;
+    max-width:1200px;
+    margin:0 auto;
+}
+.tool-card{
+    background:rgba(255,255,255,0.03);
+    border:1px solid var(--border-light);
+    border-radius:24px;
+    padding:28px 20px;
+    text-align:center;
+    transition:transform .25s ease, border-color .25s ease;
+}
+.tool-card:hover{
+    transform:translateY(-8px);
+    border-color:var(--accent-orange);
+    background:rgba(249,115,22,0.05);
+}
+.tool-card img{
+    width:64px;
+    height:64px;
+    object-fit:contain;
+    margin-bottom:18px;
+}
+.tool-card h4{
+    color:#161212;
+}
+.contact-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+    max-width:1200px;
+    margin:0 auto;
+}
+.contact-card{
+    background:rgba(255,255,255,0.03);
+    padding:35px;
+    border-radius:20px;
+    text-align:center;
+    border:1px solid var(--border-light);
+}
+.contact-card i{
+    font-size:2.5rem;
+    color:var(--accent-orange);
+    margin-bottom:20px;
+}
+.form-card{
+    background:var(--surface);
+    border:1px solid var(--border-light);
+    border-radius:32px;
+    padding:40px;
+    max-width:600px;
+    margin:0 auto;
+    box-shadow:0 30px 80px rgba(0,0,0,0.5);
+}
+.form-row{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+}
+.form-row input,
+.form-row select,
+.form-row textarea{
+    width:100%;
+    border-radius:12px;
+    border:1px solid rgba(168,85,247,0.3);
+    background:rgba(255,255,255,0.05);
+    color:#fff;
+    padding:16px 20px;
+    font-family:'Poppins',sans-serif;
+}
+.form-row input:focus,
+.form-row select:focus,
+.form-row textarea:focus{
+    outline:none;
+    border-color:var(--accent-orange);
+}
+.form-row button{
+    background:linear-gradient(135deg,var(--accent-orange),var(--accent-orange));
+    border:none;
+    color:#fff;
+    border-radius:50px;
+    padding:16px 34px;
+    font-weight:700;
+    cursor:pointer;
+    font-size:1rem;
+    transition:0.3s;
+    box-shadow:0 4px 15px rgba(249,115,22,0.3);
+}
+.form-row button:hover{
+    transform:translateY(-3px);
+}
+footer{
+    background:#ffffff;
+    color:var(--text-muted);
+    text-align:center;
+    padding:30px;
+    border-top:1px solid var(--border-light);
+}
+@media(max-width:768px){
+    .hero-container{grid-template-columns:1fr;}
+    .hero-content h1{font-size:2.5rem;}
+    .nav-menu{display:none;}
+    .timeline::before, .timeline-number{display:none;}
+    .timeline-card{max-width:100%;}
+}
+
+/* Curriculum Black Text Fix */
+.curriculum .section-title h2,
+.curriculum .section-title p,
+.accordion-header,
+.accordion-content ul li,
+.accordion-item h3,
+.accordion-item span{
+    color:#000 !important;
+}
+.accordion-item,
+.accordion-header,
+.accordion-content{
+    background:#fff !important;
+}
+.accordion-header i{
+    color:#f97316 !important;
+}
+
+.cta-section{
+    background: linear-gradient(135deg,#0f172a,#8da5da);
+    padding:70px 20px;
+    text-align:center;
+    color:#fff;
+}
+
+.cta-content{
+    max-width:900px;
+    margin:auto;
+}
+
+.cta-content h2{
+    font-size:42px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.cta-content p{
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:35px;
+    color:#e5e7eb;
+}
+
+.cta-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    border-radius:50px;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-call{
+    background:#ff9800;
+    color:#fff;
+}
+
+.btn-call:hover{
+    background:#e68900;
+    transform:translateY(-3px);
+}
+
+.btn-email{
+    background:#fff;
+    color:#2563eb;
+}
+
+.btn-email:hover{
+    background:#f4f4f4;
+    transform:translateY(-3px);
+}
+
+.contact-info{
+    margin-top:35px;
+    font-size:18px;
+}
+
+.contact-info p{
+    margin:8px 0;
+}
+body{
+font-family:Arial, Helvetica, sans-serif;
+background:#f6f8fc;
+}
+
+.faq-section{
+padding:80px 0;
+}
+
+.faq-image{
+max-width:420px;
+animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+0%{ transform:translateY(0); }
+50%{ transform:translateY(-12px); }
+100%{ transform:translateY(0); }
+}
+
+.faq-heading{
+font-size:42px;
+font-weight:700;
+margin-bottom:30px;
+color:#0046d5;
+}
+
+.accordion-item{
+border:none;
+margin-bottom:15px;
+border-radius:15px;
+overflow:hidden;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.accordion-button{
+padding:20px;
+font-size:18px;
+font-weight:600;
+background:#fff;
+}
+
+.accordion-button:not(.collapsed){
+background:#0056ff;
+color:white;
+}
+
+.accordion-button:focus{
+box-shadow:none;
+}
+
+.accordion-body{
+font-size:16px;
+line-height:28px;
+color:#555;
+background:#fff;
+}
+
+.course-overview{
+padding:90px 5%;
+background:#f8fafc;
+}
+
+.overview-container{
+max-width:1250px;
+margin:auto;
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:35px;
+align-items:start;
+}
+
+.highlights-card{
+background:#fff;
+padding:45px;
+border-radius:20px;
+box-shadow:0 10px 40px rgba(0,0,0,.08);
+}
+
+.badge{
+background:#f97316;
+color:#fff;
+padding:8px 18px;
+border-radius:30px;
+font-size:13px;
+font-weight:600;
+display:inline-block;
+margin-bottom:18px;
+}
+
+.highlights-card h2{
+font-size:38px;
+margin-bottom:15px;
+}
+
+.highlights-card p{
+color:#666;
+line-height:28px;
+}
+
+.highlight-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:25px;
+margin-top:35px;
+}
+
+.highlight-item{
+display:flex;
+gap:15px;
+align-items:center;
+padding:18px;
+border-radius:15px;
+background:#fff7ed;
+}
+
+.highlight-item i{
+font-size:28px;
+color:#f97316;
+}
+
+.highlight-item h4{
+margin-bottom:4px;
+}
+
+.bonus-box{
+margin-top:40px;
+background:#fff7ed;
+padding:25px;
+border-radius:15px;
+}
+
+.bonus-list{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+margin-top:15px;
+}
+
+.bonus-list span{
+background:#fff;
+padding:10px 18px;
+border-radius:40px;
+font-weight:600;
+}
+
+.fee-card{
+background:#fff;
+border-radius:20px;
+padding:35px;
+text-align:center;
+box-shadow:0 12px 35px rgba(0,0,0,.08);
+position:sticky;
+top:110px;
+}
+
+.offer{
+background:#f97316;
+color:#fff;
+padding:8px 16px;
+border-radius:30px;
+font-size:13px;
+}
+
+.fee-card h1{
+font-size:55px;
+color:#f97316;
+margin:20px 0;
+}
+
+.fee-card ul{
+list-style:none;
+padding:0;
+margin:25px 0;
+text-align:left;
+}
+
+.fee-card li{
+margin-bottom:14px;
+}
+
+.enroll-btn{
+display:block;
+background:#f97316;
+color:#fff;
+padding:15px;
+border-radius:50px;
+text-decoration:none;
+font-weight:700;
+}
+
+.enroll-btn:hover{
+background:#ea580c;
+}
+
+.trust-section{
+padding:80px 5%;
+text-align:center;
+background:#fff;
+}
+
+.trust-section h2{
+font-size:38px;
+margin-bottom:10px;
+}
+
+.trust-grid{
+margin-top:45px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+gap:25px;
+max-width:1200px;
+margin-inline:auto;
+}
+
+.trust-card{
+background:#fff;
+padding:30px;
+border-radius:18px;
+box-shadow:0 8px 30px rgba(0,0,0,.08);
+transition:.3s;
+}
+
+.trust-card:hover{
+transform:translateY(-8px);
+}
+
+.trust-card img{
+height:70px;
+object-fit:contain;
+margin-bottom:15px;
+}
+
+@media(max-width:900px){
+.overview-container{ grid-template-columns:1fr; }
+.highlight-grid{ grid-template-columns:1fr; }
+.fee-card{ position:static; }
+}
+</style>
+</head>
+<body>
+<nav>
+<div class="navbar-brand">
+<i class="fas fa-brain"></i>
+<span>TechKraftiers</span>
+</div>
+<ul class="nav-menu">
+<li><a href="#home">Home</a></li>
+<li><a href="#enroll">Fees</a></li>
+<li><a href="#curriculum">Curriculum</a></li>
+<li><a href="#contact">Contact</a></li>
+<li><button class="nav-cta" onclick="document.getElementById('registration-form').scrollIntoView();">Enroll now</button></li>
+</ul>
+</nav>
+
+<section class="hero" id="home">
+<div class="hero-container">
+<div class="hero-content">
+<p style="color:var(--accent-orange);font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:10px;">Advanced Data Science Training</p>
+<h1> AI Powered <span>Data Science course in </span><h1>TechKraftiers</h1>
+<p>Build expertise in Python, Machine Learning, Deep Learning, SQL, Power BI, Generative AI and Predictive Modeling through live projects, real deployment and placement support.</p>
+<div class="hero-buttons">
+<button class="btn-primary" onclick="document.getElementById('registration-form').scrollIntoView();">Enroll now</button>
+<a href="Data Science Master Program.pptx" download class="btn-secondary"><i class="fas fa-download"></i> Download Syllabus</a>
+</div>
+<div class="stats-container">
+<div class="stat-card"><h3>400+</h3><p>Data Scientists Trained</p></div>
+<div class="stat-card"><h3>93%</h3><p>Placement Rate</p></div>
+<div class="stat-card"><h3>6</h3><p>Months Duration</p></div>
+</div>
+</div>
+<div class="hero-image">
+<img src="data science.jpg" alt="Data Science Dashboard">
+</div>
+</div>
+</section>
+
+<section class="course-overview" id="enroll">
+    <div class="overview-container">
+        <div class="highlights-card">
+            <span class="badge">Most Popular Program</span>
+            <h2>Data Science</h2>
+            <p>
+                Become a Job Ready Data Scientist with Advanced Live Projects, 
+                AI Tools, Cloud Deployment and Dedicated Placement Assistance.
+            </p>
+
+            <div class="highlight-grid">
+                <div class="highlight-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <div>
+                        <h4>Live Classes</h4>
+                        <p>Expert Led Interactive Training</p>
+                    </div>
+                </div>
+
+                <div class="highlight-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <div>
+                        <h4>7+ Projects</h4>
+                        <p>Production Level AI Projects</p>
+                    </div>
+                </div>
+
+                <div class="highlight-item">
+                    <i class="fas fa-briefcase"></i>
+                    <div>
+                        <h4>Placement Support</h4>
+                        <p>Resume & Interview Prep</p>
+                    </div>
+                </div>
+
+                <div class="highlight-item">
+                    <i class="fas fa-certificate"></i>
+                    <div>
+                        <h4>Certificate</h4>
+                        <p>Mastery Course Completion</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bonus-box">
+                <h3>🎁 Bonus Included</h3>
+                <div class="bonus-list">
+                    <span>AI Resume Building</span>
+                    <span>LinkedIn Networking</span>
+                    <span>GitHub & Kaggle Portfolio</span>
+                    <span>Technical Mock Interviews</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="fee-card">
+            <span class="offer">LIMITED OFFER</span>
+            <h3>Course Fee</h3>
+            <h1>₹65,000</h1>
+            <p class="emi">
+                EMI Starting From
+                <strong>₹10,833 × 6 Months</strong>
+            </p>
+
+            <ul>
+                <li>✔ Live AI & ML Training</li>
+                <li>✔ Lifetime Cloud Lab Access</li>
+                <li>✔ Industry Capstone Projects</li>
+                <li>✔ 1-on-1 Mentorship</li>
+            </ul>
+
+            <a href="#registration-form" class="enroll-btn">
+                Enroll Now
+            </a>
+        </div>
+    </div>
+</section>
+
+<section class="curriculum" id="curriculum">
+<div class="section-title">
+<h2>Complete <span>Data Science Curriculum</span></h2>
+<p>A structured program built around advanced technical modules and production-ready deployments.</p>
+</div>
+<div class="curriculum-accordion">
+<div class="accordion-item">
+<button class="accordion-header"><span>Python Programming & Data Structures</span><i class="fas fa-plus"></i></button>
+<div class="accordion-content"><ul><li>Core Python, Functions & OOPs Concepts</li><li>Data Manipulation with Pandas & NumPy</li><li>Data Cleaning & Exploratory Data Analysis (EDA)</li></ul></div>
+</div>
+<div class="accordion-item">
+<button class="accordion-header"><span>Advanced SQL & Big Data Intro</span><i class="fas fa-plus"></i></button>
+<div class="accordion-content"><ul><li>Complex Queries, Subqueries & Joins</li><li>Window Functions & Optimization</li><li>Database Design & Analytical Warehousing</li></ul></div>
+</div>
+<div class="accordion-item">
+<button class="accordion-header"><span>Applied Statistics & Mathematics</span><i class="fas fa-plus"></i></button>
+<div class="accordion-content"><ul><li>Probability Distributions & Linear Algebra</li><li>Hypothesis Testing & A/B Testing</li><li>Regression Models & ANOVA</li></ul></div>
+</div>
+<div class="accordion-item">
+<button class="accordion-header"><span>Machine Learning Algorithms</span><i class="fas fa-plus"></i></button>
+<div class="accordion-content"><ul><li>Supervised vs Unsupervised Learning</li><li>Scikit-Learn, Feature Engineering & Selection</li><li>Model Evaluation, Tuning & Hyperparameters</li></ul></div>
+</div>
+<div class="accordion-item">
+<button class="accordion-header"><span>Deep Learning & Generative AI</span><i class="fas fa-plus"></i></button>
+<div class="accordion-content"><ul><li>Neural Networks with TensorFlow / PyTorch</li><li>Computer Vision & Natural Language Processing (NLP)</li><li>Introduction to LLMs & Prompt Engineering</li></ul></div>
+</div>
+<div class="accordion-item">
+<button class="accordion-header"><span>BI Dashboards & MLOps Capstone</span><i class="fas fa-plus"></i></button>
+<div class="accordion-content"><ul><li>Advanced Storytelling with Power BI / Tableau</li><li>Model Deployment with Flask / Streamlit</li><li>Cloud Architecture & Portfolio Final Presentation</li></ul></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="workflow">
+<div class="section-title">
+<h2>Professional <span>Data Science Workflow</span></h2>
+<p>Every step of the lifecycle is covered in training for building reliable AI systems.</p>
+</div>
+<div class="timeline">
+<div class="timeline-step"><div class="timeline-number">1</div><div class="timeline-card"><h3>Data Ingestion</h3><p>Extract large datasets from relational databases, cloud storage, APIs, and unstructured web sources.</p></div></div>
+<div class="timeline-step"><div class="timeline-number">2</div><div class="timeline-card"><h3>Data Preprocessing & EDA</h3><p>Handle missing values, outliners, perform feature scaling, and uncover structural statistical patterns.</p></div></div>
+<div class="timeline-step"><div class="timeline-number">3</div><div class="timeline-card"><h3>Feature Engineering</h3><p>Select, combine, and transform variables into optimal features to boost machine learning model accuracy.</p></div></div>
+<div class="timeline-step"><div class="timeline-number">4</div><div class="timeline-card"><h3>Model Training & Tuning</h3><p>Train state-of-the-art algorithms, validate robustness, and optimize hyperparameters to prevent overfitting.</p></div></div>
+<div class="timeline-step"><div class="timeline-number">5</div><div class="timeline-card"><h3>Deployment (MLOps)</h3><p>Integrate your models into scalable web apps using Flask/Streamlit and host them on cloud platforms.</p></div></div>
+<div class="timeline-step"><div class="timeline-number">6</div><div class="timeline-card"><h3>Monitoring & Feedback</h3><p>Track performance metrics over time, maintain model drift protocols, and ensure continuous accuracy updates.</p></div></div>
+</div>
+</section>
+
+<section class="section" id="tools">
+<div class="section-title">
+<h2>Tools &amp; <span>Technologies</span></h2>
+<p>We cover the modern stack so you can build, train, deploy, and monitor scalable models confidently.</p>
+</div>
+<div class="tools-grid">
+<div class="tool-card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968350.png" alt="Python"><h4>Python</h4></div>
+<div class="tool-card"><img src="https://cdn-icons-png.flaticon.com/512/4248/4248443.png" alt="SQL"><h4>SQL</h4></div>
+<div class="tool-card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968357.png" alt="NumPy"><h4>NumPy</h4></div>
+<div class="tool-card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968381.png" alt="Pandas"><h4>Pandas</h4></div>
+<div class="tool-card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png" alt="MySQL"><h4>MySQL</h4></div>
+<div class="tool-card"><img src="https://cdn-icons-png.flaticon.com/512/732/732208.png" alt="Power BI"><h4>Power BI</h4></div>
+<div class="tool-card"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968705.png" alt="Tableau"><h4>Tableau</h4></div>
+<div class="tool-card"><img src="https://cdn-icons-png.flaticon.com/512/2103/2103633.png" alt="Machine Learning"><h4>Scikit-Learn</h4></div>
+</div>
+</section>
+
+<section class="trust-section">
+    <h2>Trusted & Industry Connected</h2>
+    <p>Training aligned with industry standards and hiring ecosystem.</p>
+    <div class="trust-grid">
+        <div class="trust-card"><img src="iso.jpg"><h4>ISO Certified</h4></div>
+        <div class="trust-card"><img src="msme.jpg"><h4>MSME</h4></div>
+        <div class="trust-card"><img src="ugcRecognized.jpg"><h4>UGC</h4></div>
+        <div class="trust-card"><img src="naac.jpg"><h4>NAAC</h4></div>
+        <div class="trust-card"><img src="aict.jpg"><h4>AICTE</h4></div>
+        <div class="trust-card"><img src="asenturee.jpg"><h4>Accenture</h4></div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="cta-content">
+        <h2>Ready to Start Your Journey?</h2>
+        <p>
+            Kickstart your digital career with TechKraftiers Digital.
+            Join our industry-focused training programs and get expert guidance.
+        </p>
+        <div class="cta-buttons">
+            <a href="tel:+917738415492" class="btn btn-call">📞 Call Now</a>
+            <a href="mailto:info@techkraftiersdigital.in" class="btn btn-email">✉ Email Us</a>
+        </div>
+        <div class="contact-info">
+            <p><strong>Phone:</strong> +91 7738415492</p>
+            <p><strong>Email:</strong> info@techkraftiersdigital.in</p>
+        </div>
+    </div>
+</section>
+
+
+<section class="section" id="contact">
+<div class="section-title">
+<h2>Get In <span>Touch</span></h2>
+<p>Speak with our admissions team and reserve your seat for the next data science batch.</p>
+</div>
+<div class="contact-container">
+<div class="contact-card"><i class="fas fa-location-dot"></i><h3>Location</h3><p>Haware's Centurion Mall, F-01A-28, First Floor, Nerul East, Navi Mumbai</p></div>
+<div class="contact-card"><i class="fas fa-phone"></i><h3>Phone</h3><p>+91 7738415492</p></div>
+<div class="contact-card"><i class="fas fa-globe"></i><h3>Website</h3><p>techkraftiersdigital.in</p></div>
+</div>
+</section>
+
+<section class="section" id="registration-form">
+<div class="section-title">
+<h2>Enroll now <span></span></h2>
+<p>Fill out the form below to book a free introductory session.</p>
+</div>
+<div class="form-card">
+<form class="form-row">
+<input type="text" placeholder="Full Name" required>
+<input type="tel" placeholder="Mobile Number" required>
+<input type="email" placeholder="Email Address" required>
+<select required>
+<option value="">Select Qualification</option>
+<option>10th Pass</option>
+<option>12th Pass</option>
+<option>Graduate</option>
+<option>Post Graduate</option>
+<option>Working Professional</option>
+</select>
+<textarea placeholder="Message" rows="5"></textarea>
+<button type="submit">Register For Free Demo</button>
+</form>
+</div>
+</section>
+
+<footer>
+<p>© 2026 TechKraftiers Digital. All Rights Reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const accordionItems=document.querySelectorAll('.accordion-item');
+accordionItems.forEach(item=>{
+    const header=item.querySelector('.accordion-header');
+    if(header) {
+        header.addEventListener('click',()=>{
+            item.classList.toggle('active');
+        });
+    }
+});
+</script>
+</body>
+</html>

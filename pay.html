@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pay Fee - TechKraftiers Academy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #1e1b4b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* Main Container Design */
+        .pay-page-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 16px;
+            width: 100%;
+            max-width: 850px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e5e7eb;
+        }
+
+        /* Heading Section */
+        .pay-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .pay-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #1e1b4b;
+            margin-bottom: 8px;
+        }
+
+        .pay-header p {
+            color: #6b7280;
+            font-size: 1rem;
+        }
+
+        /* Two-column Layout for Form & Scanner */
+        .pay-body-layout {
+            display: flex;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .pay-form-section {
+            flex: 1.2;
+            min-width: 300px;
+        }
+
+        .pay-scanner-section {
+            flex: 0.8;
+            min-width: 280px;
+            background-color: #f9fafb;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px dashed #cbd5e1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #1e1b4b;
+            margin-bottom: 8px;
+        }
+
+        .form-group input, 
+        .form-group select {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            outline: none;
+            color: #1e1b4b;
+            transition: 0.3s;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus {
+            border-color: #f97316; /* Orange Theme */
+            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.15);
+        }
+
+        /* Submit Button */
+        .submit-btn {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+            margin-top: 10px;
+            box-shadow: 0 4px 12px rgba(249, 115, 22, 0.2);
+        }
+
+        .submit-btn:hover {
+            opacity: 0.95;
+            box-shadow: 0 6px 18px rgba(249, 115, 22, 0.35);
+        }
+
+        /* Scanner Styling */
+        .pay-scanner-section h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #1e1b4b;
+            margin-bottom: 15px;
+        }
+
+        .qr-container {
+            background: #ffffff;
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            display: inline-block;
+        }
+
+        #scannerImg {
+            width: 190px;
+            height: 190px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .scanner-note {
+            font-size: 0.85rem;
+            color: #6b7280;
+            line-height: 1.4;
+        }
+
+        /* Back to Home Link */
+        .back-link {
+            display: inline-block;
+            margin-top: 25px;
+            color: #6b7280;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .back-link:hover {
+            color: #f97316;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 600px) {
+            .pay-page-container {
+                padding: 20px;
+            }
+            .pay-body-layout {
+                gap: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pay-page-container">
+        
+        <div class="pay-header">
+            <h2>Online Fee Payment</h2>
+            <p>Fill in your details and scan the QR code to securely complete your payment.</p>
+        </div>
+
+        <div class="pay-body-layout">
+            
+            <div class="pay-form-section">
+                <form id="feePaymentForm">
+                    <div class="form-group">
+                        <label for="studentName">Full Name</label>
+                        <input type="text" id="studentName" placeholder="Enter Student's Full Name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentMobile">Mobile Number</label>
+                        <input type="tel" id="studentMobile" placeholder="Enter 10-digit Mobile Number" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="studentEmail">Email Address</label>
+                        <input type="email" id="studentEmail" placeholder="e.g. yourname@gmail.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="selectCourse">Select Your Course</label>
+                        <select id="selectCourse" required>
+                            <option value="" disabled selected>-- Choose your course --</option>
+                            
+                            <optgroup label="IT Courses">
+                                <option value="Full Stack Web Development">Full Stack Web Development</option>
+                                <option value="Full Stack Java Development">Full Stack Java Development</option>
+                                <option value="Full Stack Python Development">Full Stack Python Development</option>
+                                <option value="MERN Stack Development">MERN Stack Development</option>
+                                <option value="Dot Net Development">Dot Net Development</option>
+                                <option value="Data Analytics">Data Analytics</option>
+                                <option value="Data Science">Data Science</option>
+                                <option value="Cloud Computing">Cloud Computing</option>
+                                <option value="Cyber Security">Cyber Security</option>
+                                <option value="DevOps">DevOps</option>
+                            </optgroup>
+                            
+                            <optgroup label="Accounting & Finance">
+                                <option value="MS Excel">MS Excel</option>
+                                <option value="MS PowerPoint">MS PowerPoint</option>
+                                <option value="MS Word">MS Word</option>
+                            </optgroup>
+                            
+                            <optgroup label="Digital Marketing">
+                                <option value="Digital Marketing">Digital Marketing</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="feeAmount">Amount to Pay (₹)</label>
+                        <input type="number" id="feeAmount" placeholder="Enter Amount" required>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">Verify & Submit Payment</button>
+                </form>
+                
+                <a href="coursess.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Courses</a>
+            </div>
+            
+            <div class="pay-scanner-section">
+                <h3>Scan QR Code to Pay</h3>
+                <div class="qr-container">
+                    <img src="img/sir-scanner.png" alt="Payment QR Code" id="scannerImg">
+                </div>
+                <p class="scanner-note">
+                    <i class="fas fa-info-circle"></i> Scan using any UPI application like Google Pay, PhonePe, or Paytm.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("feePaymentForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            const name = document.getElementById("studentName").value;
+            const amount = document.getElementById("feeAmount").value;
+            alert(`Details saved successfully for ${name}. Please scan and finish the payment of ₹${amount}.`);
+        });
+    </script>
+</body>
+</html>

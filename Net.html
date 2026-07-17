@@ -1,0 +1,3103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DOTNETIFY | Premium .NET Full Stack Bootcamp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-oqU8A1Bfci3L1m5Ff2jD0tF7gd8E6P3ssWkCRqz7NzpOf1D2Zt4Pbz1m80Mx7eCC7HCDO2X3o/3TwIMb0u1dEA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" integrity="sha512-Ho3leQIOtEyVGH9s+gZLTI+7P47r7FoS8t2SvJrQx7W8zkHzwug0ohK+oK5t8tYsp8QMKQwT+q7gJ2sIAR7xkg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    :root {
+      --bg: #ffffff;
+      --surface: rgba(27, 17, 48, 0.92);
+      --surface-strong: rgba(20, 12, 35, 0.96);
+      --surface-soft: rgba(38, 22, 60, 0.72);
+      --text: #222222;
+      --muted: #666666;
+      --primary: #ff6b00;
+      --primary-soft: rgba(168, 85, 247, 0.2);
+      --accent: #ff8c00;
+      --accent-2: #fb7185;
+      --border: rgba(168, 128, 248, 0.18);
+      --shadow: 0 36px 90px rgba(0, 0, 0, 0.45);
+      --radius: 28px;
+      --grid-gap: 2rem;
+      font-synthesis: none;
+      text-rendering: optimizeLegibility;
+      scroll-behavior: smooth;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:#ffffff;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(circle at top 10% left 20%, rgba(168, 85, 247, 0.22), transparent 20%),
+        radial-gradient(circle at bottom 10% right 15%, rgba(45, 212, 191, 0.18), transparent 18%);
+      opacity: 1;
+      z-index: 0;
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(10, 14, 29, 0.18), rgba(7, 10, 22, 0.32));
+      z-index: 1;
+    }
+
+    .page-wrapper {
+      position: relative;
+      z-index: 2;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(20px);
+      background:#ffffff;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1.08rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-shadow: 0 0 18px rgba(168, 85, 247, 0.2);
+    }
+
+    .brand span {
+      color: #f57d21;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      letter-spacing: 0.01em;
+      padding: 0.3rem 0;
+      transition: color 0.25s ease, transform 0.25s ease, text-shadow 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #222222;
+      transform: translateY(-1px);
+      text-shadow: 0 0 18px rgba(168, 85, 247, 0.35);
+    }
+
+    .nav-links a.active {
+      border-bottom: 2px solid rgba(245, 123, 30, 0.9);
+      padding-bottom: 0.2rem;
+    }
+
+    .btn-cta,
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      border-radius: 999px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .btn-cta,
+    .btn-primary {
+      padding: 0.95rem 1.8rem;
+      border: none;
+      color:#222222;
+      background: linear-gradient(135deg, rgba(248, 117, 30, 0.95), rgba(45, 212, 191, 0.94));
+      box-shadow: 0 18px 45px rgba(168, 85, 247, 0.28);
+    }
+
+    .btn-secondary {
+      padding: 0.92rem 1.7rem;
+      border: 1px solid rgba(168, 85, 247, 0.18);
+      color: #222222;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(18px);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02), 0 20px 40px rgba(28, 17, 50, 0.35);
+    }
+
+    .btn-cta:hover,
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 48px rgba(168, 85, 247, 0.24);
+    }
+
+    .hero {
+      position: relative;
+      padding: 4rem 0 3rem;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      top: -120px;
+      right: -140px;
+      background: radial-gradient(circle, rgba(168, 85, 247, 0.3), transparent 56%);
+      filter: blur(40px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      border-radius: 50%;
+      bottom: -140px;
+      left: -120px;
+      background: radial-gradient(circle, rgba(244, 114, 182, 0.22), transparent 58%);
+      filter: blur(42px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(420px, 520px);
+      align-items: center;
+      gap: 2.5rem;
+      min-height: 720px;
+      z-index: 1;
+    }
+
+    .hero-copy {
+      max-width: 100%;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      background: rgba(168, 85, 247, 0.12);
+      color: #8b5cf6;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      margin-bottom: 1.4rem;
+      border: 1px solid rgba(168, 85, 247, 0.18);
+      box-shadow: 0 0 24px rgba(168, 85, 247, 0.1);
+    }
+
+    .hero-copy h1 {
+      font-size: clamp(3rem, 4vw, 4.6rem);
+      line-height: 0.95;
+      max-width: 15ch;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.04em;
+      text-shadow: 0 0 18px rgba(168, 85, 247, 0.18);
+    }
+
+    .hero-copy h1 .highlight {
+      background: linear-gradient(135deg, #ff6b00, #ff8c00, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: none;
+    }
+
+    .hero-copy p {
+      max-width: 34rem;
+      margin-bottom: 2rem;
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1.03rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .hero-meta-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.25rem 1.4rem;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(168, 85, 247, 0.16);
+      box-shadow: inset 0 0 0 1px rgba(67, 56, 202, 0.04), 0 16px 40px rgba(0, 0, 0, 0.08);
+    }
+
+    .hero-meta-card i {
+      width: 3rem;
+      height: 3rem;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color:#ffffff;
+      background: linear-gradient(135deg, rgba(237, 100, 32, 0.95), rgba(45, 212, 191, 0.95));
+      box-shadow: 0 0 25px rgba(168, 85, 247, 0.22);
+      font-size: 1rem;
+    }
+
+    .hero-meta-card strong {
+      display: block;
+      color:#222222;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .hero-meta-card span {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 620px;
+      z-index: 1;
+    }
+
+    .hero-card {
+      position: relative;
+      width: 100%;
+      max-width: 560px;
+      border-radius: 38px;
+      overflow: hidden;
+      padding: 1rem;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(245, 245, 245, 0.92));
+      border: 1px solid rgba(168, 85, 247, 0.16);
+      box-shadow: 0 40px 90px rgba(0, 0, 0, 0.15);
+      backdrop-filter: blur(24px);
+    }
+
+    .hero-card::before,
+    .hero-card::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-card::before {
+      width: 210px;
+      height: 210px;
+      top: -55px;
+      right: -55px;
+      background: rgba(168, 85, 247, 0.18);
+      filter: blur(46px);
+    }
+
+    .hero-card::after {
+      width: 180px;
+      height: 180px;
+      bottom: -60px;
+      left: -45px;
+      background: rgba(168, 85, 247, 0.14);
+      filter: blur(42px);
+    }
+
+    .hero-frame {
+      position: relative;
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid rgba(168, 85, 247, 0.18);
+      background: linear-gradient(180deg, rgba(240, 240, 250, 0.96), rgba(220, 220, 240, 0.92));
+      box-shadow: inset 0 0 0 1px rgba(123, 78, 224, 0.08);
+    }
+
+    .hero-frame img {
+      width: 100%;
+      display: block;
+      border-radius: 30px;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+    }
+
+    .tech-badges {
+      position: absolute;
+      inset: auto 1.2rem 1.2rem;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      z-index: 2;
+    }
+
+    .tech-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.95rem;
+      padding: 1rem 1.1rem;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(168, 85, 247, 0.14);
+      box-shadow: 0 24px 55px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(18px);
+      color: #222222;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .tech-badge:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 26px 65px rgba(168, 85, 247, 0.22);
+    }
+
+    .tech-icon {
+      width: 3.2rem;
+      height: 3.2rem;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.25), rgba(45, 212, 191, 0.22));
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.05);
+    }
+
+    .tech-icon i {
+      color: #512bd4;
+      font-size: 1.15rem;
+    }
+
+    .tech-badge strong {
+      font-size: 0.98rem;
+      color: #222222;
+      display: block;
+    }
+
+    .tech-badge span {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.4;
+      display: block;
+      margin-top: 0.15rem;
+    }
+
+    .section-header {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 2.8vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: #222222;
+    }
+
+    .section-header p {
+      max-width: 58rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1.4rem;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      align-items: start;
+      padding: 1.5rem 1.5rem 1.5rem 1.7rem;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(168, 85, 247, 0.12);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(18px);
+    }
+
+    .timeline-icon {
+      width: 3.6rem;
+      height: 3.6rem;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.18), rgba(45, 212, 191, 0.14));
+      border: 1px solid rgba(141, 98, 246, 0.08);
+      color: #ff6b00;
+      font-size: 1.2rem;
+      box-shadow: 0 12px 30px rgba(92, 50, 205, 0.05);
+    }
+
+    .timeline-content h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      color: #ff6b00;
+    }
+
+    .timeline-content p {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 0.98rem;
+    }
+
+    .tech-grid,
+    .feature-grid,
+    .pricing-grid,
+    .project-grid,
+    .career-grid,
+    .testimonials-grid,
+    .contact-grid,
+    .footer-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .tech-grid,
+    .feature-grid,
+    .project-grid,
+    .career-grid,
+    .testimonials-grid {
+      margin-top: 1.8rem;
+    }
+
+    .tech-card,
+    .feature-card,
+    .career-card,
+    .testimonial-card,
+    .pricing-card,
+    .project-card,
+    .contact-panel,
+    .contact-form,
+    .footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tech-card,
+    .feature-card,
+    .pricing-card,
+    .career-card,
+    .testimonial-card,
+    .project-card,
+    .contact-panel,
+    .contact-form {
+      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.85);
+      border: 1px solid rgba(168, 85, 247, 0.12);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.05);
+      backdrop-filter: blur(20px);
+    }
+
+    .tech-card,
+    .feature-card,
+    .career-card,
+    .testimonial-card,
+    .pricing-card,
+    .project-card {
+      padding: 1.8rem;
+      overflow: hidden;
+    }
+
+    .tech-card {
+      min-height: 100%;
+    }
+
+    .tech-card i,
+    .feature-card i,
+    .career-card strong {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 16px;
+      background: rgba(168, 85, 247, 0.15);
+      color: #ff6b00;
+      font-size: 1.1rem;
+      margin-bottom: 1.3rem;
+    }
+
+    .tech-card h3,
+    .feature-card h3,
+    .career-card h3,
+    .project-card h3,
+    .testimonial-card strong {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      color: #ff6b00;
+    }
+
+    .tech-card p,
+    .feature-card p,
+    .career-card p,
+    .project-card p,
+    .testimonial-card p,
+    .pricing-card p,
+    .testimonial-card span,
+    .footer-note,
+    .contact-card span {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.98rem;
+    }
+
+    .tech-card ul,
+    .pricing-card ul,
+    .accordion-content ul {
+      list-style: none;
+      margin-top: 1.4rem;
+      padding-left: 0;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .tech-card ul li,
+    .pricing-card ul li,
+    .accordion-content ul li {
+      position: relative;
+      padding-left: 1.7rem;
+      color: var(--muted);
+    }
+
+    .tech-card ul li::before,
+    .pricing-card ul li::before,
+    .accordion-content ul li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 0.15rem;
+      color: #ff6b00;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    .feature-card {
+      padding: 1.6rem;
+      min-height: 240px;
+    }
+
+    .feature-card i {
+      margin-bottom: 1rem;
+      background: rgba(244, 114, 182, 0.18);
+      color: #ff8c00;
+    }
+
+    .feature-card h3 {
+      margin-bottom: 0.9rem;
+    }
+
+    .feature-card span {
+      display: inline-flex;
+      margin-top: 1.4rem;
+      color: #ff6b00;
+      font-size: 0.95rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+
+    .pricing-grid {
+      grid-template-columns: repeat(3, minmax(260px, 1fr));
+    }
+
+    .pricing-card {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 2rem;
+      min-height: 420px;
+    }
+
+    .pricing-card.best {
+      border-color: rgba(255, 107, 0, 0.75);
+      box-shadow: 0 40px 100px rgba(255, 107, 0, 0.15);
+    }
+
+    .plan-label {
+      display: inline-block;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      color:#ff6b00;
+      background: rgba(255, 107, 0, 0.12);
+      font-size: 0.85rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .pricing-card h3 {
+      font-size: 1.45rem;
+      margin-bottom: 0.85rem;
+      color:#222222;
+    }
+
+    .pricing-card strong {
+      font-size: 2rem;
+      margin-top: 0.3rem;
+      color: #222222;
+    }
+
+    .pricing-card a {
+      margin-top: auto;
+      width: fit-content;
+    }
+
+    .pricing-card a.btn-primary {
+      width: 100%;
+      color: #ffffff;
+    }
+
+    .pricing-card a.btn-secondary {
+      width: 100%;
+    }
+
+    .section-gradient {
+      background: rgba(250, 250, 250, 0.78);
+      border-top: 1px solid rgba(168, 85, 247, 0.14);
+      border-bottom: 1px solid rgba(168, 85, 247, 0.14);
+      padding: 4rem 0;
+      backdrop-filter: blur(18px);
+    }
+
+    .accordion {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .accordion-item {
+      border-radius: 28px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(168, 85, 247, 0.16);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.05);
+    }
+
+    .accordion-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.5rem 1.6rem;
+      cursor: pointer;
+    }
+
+    .accordion-header .accordion-title strong {
+      font-size: 1.05rem;
+      color: #222222;
+    }
+
+    .accordion-header .accordion-title span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.96rem;
+      margin-top: 0.3rem;
+    }
+
+    .accordion-header i {
+      color: rgba(255, 107, 0, 0.85);
+      font-size: 0.95rem;
+    }
+
+    .accordion-content {
+      padding: 0 1.6rem 1.6rem;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.97rem;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.35s ease;
+    }
+
+    .accordion-item.active .accordion-content {
+      max-height: 999px;
+      padding: 0 1.6rem 1.6rem;
+    }
+
+    .project-card {
+      overflow: hidden;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 24px 24px 0 0;
+    }
+
+    .project-card-content {
+      padding: 1.5rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .project-card .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      background: rgba(255, 107, 0, 0.1);
+      color: #ff6b00;
+      font-size: 0.92rem;
+      width: fit-content;
+      font-weight: 600;
+    }
+
+    .career-grid {
+      grid-template-columns: repeat(3, minmax(260px, 1fr));
+      gap: 1.2rem;
+      margin-top: 1.5rem;
+    }
+
+    .career-card {
+      padding: 1.8rem;
+      min-height: 220px;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .career-card strong {
+      width: 3.1rem;
+      height: 3.1rem;
+      background: rgba(255, 107, 0, 0.12);
+      color: #ff6b00;
+      font-size: 1.1rem;
+    }
+
+    .career-card span {
+      font-weight: 700;
+      color: #ff6b00;
+      letter-spacing: 0.02em;
+    }
+
+    .testimonials-grid {
+      margin-top: 1.8rem;
+      grid-template-columns: repeat(3, minmax(260px, 1fr));
+    }
+
+    .testimonial-card {
+      padding: 1.8rem;
+      min-height: 280px;
+      display: grid;
+      gap: 1.2rem;
+    }
+
+    .testimonial-avatar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .testimonial-avatar img {
+      width: 3.8rem;
+      height: 3.8rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255, 107, 0, 0.3);
+    }
+
+    .testimonial-info strong {
+      color: #222222;
+      font-size: 1rem;
+    }
+
+    .testimonial-info span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: #fbbf24;
+      font-size: 0.95rem;
+    }
+
+    .rating span {
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 360px minmax(0, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-panel {
+      padding: 2rem;
+      display: grid;
+      gap: 1rem;
+      border-radius: 32px;
+    }
+
+    .contact-panel h3 {
+      font-size: 1.45rem;
+      margin-bottom: 1rem;
+      color: #ff6b00;
+    }
+
+    .contact-card {
+      padding: 1rem 1.1rem;
+      border-radius: 22px;
+      background: rgba(0,0,0,0.02);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .contact-card strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      color: #ff8c00;
+    }
+
+    .contact-card span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .contact-form {
+      padding: 2rem;
+      border-radius: 32px;
+      display: grid;
+      gap: 1.25rem;
+      background: rgba(0,0,0,0.02);
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .contact-form .input-group {
+      display: grid;
+      gap: 0.6rem;
+    }
+
+    .contact-form label {
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      border: 1px solid rgba(0,0,0,0.12);
+      border-radius: 18px;
+      background: #ffffff;
+      color: var(--text);
+      padding: 1rem 1.1rem;
+      font-size: 0.98rem;
+      outline: none;
+    }
+
+    .contact-form textarea {
+      min-height: 160px;
+      resize: vertical;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: rgba(255, 107, 0, 0.8);
+      box-shadow: 0 0 0 3px rgba(255, 107, 0, 0.1);
+    }
+
+    .contact-form button {
+      margin-top: 0.5rem;
+      width: fit-content;
+      padding: 0.95rem 1.8rem;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, rgba(168, 85, 247, 0.95), rgba(255, 107, 0, 0.95));
+      color:#ffffff;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 18px 40px rgba(252, 119, 24, 0.2);
+    }
+
+    .map-frame {
+      overflow: hidden;
+      border-radius: 30px;
+      border: 1px solid rgba(168, 85, 247, 0.16);
+      margin-top: 2.5rem;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.05);
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 1.4rem;
+      bottom: 1.4rem;
+      width: 3.8rem;
+      height: 3.8rem;
+      display: grid;
+      place-items: center;
+      background: #25d366;
+      color: #fff;
+      border-radius: 50%;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.15);
+      z-index: 30;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 48px rgba(0, 0, 0, 0.2);
+    }
+
+    .scroll-top {
+      position: fixed;
+      right: 1.4rem;
+      bottom: 6.4rem;
+      width: 3.8rem;
+      height: 3.8rem;
+      display: grid;
+      place-items: center;
+      background: rgba(255, 255, 255, 0.95);
+      color:#ff6b00;
+      border: 1px solid rgba(255, 107, 0, 0.2);
+      border-radius: 50%;
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(12px);
+      transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+      z-index: 30;
+    }
+
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .footer {
+      padding: 2.5rem 0 1.5rem;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      color: var(--muted);
+      background: rgba(250, 250, 250, 0.9);
+    }
+
+    .map-frame iframe {
+      width: 100%;
+      min-height: 320px;
+      border: none;
+    }
+
+    .footer-grid {
+      grid-template-columns: repeat(3, minmax(240px, 1fr));
+      gap: 1.5rem;
+      align-items: start;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .footer h3 {
+      color: #ff6b00;
+      margin-bottom: 1rem;
+      font-size: 1.05rem;
+    }
+
+    .footer-links,
+    .social-links {
+      list-style: none;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .footer-links a,
+    .social-links a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.25s ease;
+    }
+
+    .footer-links a:hover,
+    .social-links a:hover {
+      color: #ff6b00;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.9;
+    }
+
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-meta {
+        grid-template-columns: 1fr;
+      }
+
+      .topbar {
+        padding: 1rem 0.5rem;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      .pricing-grid,
+      .career-grid,
+      .testimonials-grid,
+      .project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        width: min(100%, calc(100% - 1.5rem));
+      }
+
+      .hero {
+        padding-top: 3rem;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.5rem, 9vw, 3.4rem);
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .hero-visual {
+        min-height: 500px;
+      }
+
+      .tech-badges {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .pricing-grid,
+      .career-grid,
+      .testimonials-grid,
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nav-links {
+        gap: 0.8rem;
+      }
+
+      .hero-copy h1 {
+        font-size: 2.6rem;
+      }
+
+      .hero-meta-card {
+        padding: 1rem 1rem;
+      }
+
+      .hero-card {
+        padding: 0.9rem;
+      }
+
+      .hero-frame img {
+        height: 260px;
+      }
+    }
+
+    /*==========================
+  .NET Full Stack Tools
+==========================*/
+
+.tools-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.tool-card{
+    background:#fff;
+    padding:30px 20px;
+    border-radius:15px;
+    text-align:center;
+    border:1px solid #e5e7eb;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.tool-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(0,0,0,.15);
+}
+
+.tool-card img{
+    width:70px;
+    height:70px;
+    object-fit:contain;
+    margin-bottom:15px;
+    transition:.3s;
+}
+
+.tool-card:hover img{
+    transform:scale(1.1);
+}
+
+.tool-card h4{
+    margin:0;
+    font-size:18px;
+    font-weight:600;
+    color:#222;
+}
+
+@media(max-width:768px){
+
+    .tools-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:18px;
+    }
+
+    .tool-card{
+        padding:20px;
+    }
+
+    .tool-card img{
+        width:55px;
+        height:55px;
+    }
+
+    .tool-card h4{
+        font-size:16px;
+    }
+}
+/*=========================
+  TOOLS SECTION
+==========================*/
+
+.tools-section{
+    padding:80px 8%;
+    background:#f8fafc;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:42px;
+    font-weight:700;
+    color:#111;          /* Black Heading */
+    margin-bottom:15px;
+}
+
+.section-title h2 span{
+    color:#111;          /* Black */
+}
+
+.section-title p{
+    font-size:18px;
+    color:#666;
+}
+
+
+/*=========================
+  GRID
+==========================*/
+
+.tools-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:30px;
+}
+
+
+/*=========================
+  CARD
+==========================*/
+
+.tool-card{
+
+    background:#fff;
+    border-radius:18px;
+    padding:35px 20px;
+
+    text-align:center;
+
+    border:1px solid #eee;
+
+    transition:.35s;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.06);
+}
+
+.tool-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.15);
+}
+
+
+.tool-card img{
+
+    width:75px;
+    height:75px;
+    object-fit:contain;
+
+    margin-bottom:18px;
+
+    transition:.3s;
+}
+
+.tool-card:hover img{
+
+    transform:scale(1.1);
+}
+
+.tool-card h4{
+
+    font-size:22px;
+
+    color:#111;
+
+    font-weight:600;
+
+    margin:0;
+}
+
+
+/*=========================
+  MOBILE
+==========================*/
+
+@media(max-width:768px){
+
+.tools-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+gap:20px;
+
+}
+
+.section-title h2{
+
+font-size:32px;
+
+}
+
+.tool-card{
+
+padding:25px 15px;
+
+}
+
+.tool-card img{
+
+width:60px;
+
+height:60px;
+
+}
+
+.tool-card h4{
+
+font-size:18px;
+
+}
+
+}
+
+/*=========================
+        WORKFLOW
+==========================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+.workflow-section{
+    padding:90px 8%;
+    background:#f8fafc;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-size:42px;
+    font-weight:700;
+    color:#111;
+}
+
+.section-title span{
+    color:#ff6600;
+}
+
+.section-title p{
+    margin-top:12px;
+    font-size:18px;
+    color:#666;
+}
+
+/*=========================
+      TIMELINE
+==========================*/
+
+.timeline{
+    position:relative;
+    max-width:1200px;
+    margin:auto;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    width:4px;
+    background:#ff6600;
+    top:0;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+/*=========================
+       ITEM
+==========================*/
+
+.timeline-item{
+    position:relative;
+    width:50%;
+    padding:20px 45px;
+    margin-bottom:60px;
+}
+
+.timeline-item.left{
+    left:0;
+}
+
+.timeline-item.right{
+    left:50%;
+}
+
+/*=========================
+      NUMBER CIRCLE
+==========================*/
+
+.circle{
+    position:absolute;
+    width:50px;
+    height:50px;
+    background:#ff6600;
+    color:#fff;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-size:20px;
+    top:35px;
+    z-index:5;
+    border:5px solid #fff;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.left .circle{
+    right:-25px;
+}
+
+.right .circle{
+    left:-25px;
+}
+
+/*=========================
+       CARD
+==========================*/
+
+.card{
+    background:#fff;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    transition:.35s;
+    border-top:5px solid #ff6600;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
+}
+
+.card h3{
+    font-size:24px;
+    color:#111;
+    margin-bottom:12px;
+}
+
+.card p{
+    color:#666;
+    line-height:1.8;
+    font-size:16px;
+}
+
+/*=========================
+      LEFT ALIGN
+==========================*/
+
+.left{
+    text-align:right;
+}
+
+.left .card{
+    margin-right:30px;
+}
+
+/*=========================
+      RIGHT ALIGN
+==========================*/
+
+.right{
+    text-align:left;
+}
+
+.right .card{
+    margin-left:30px;
+}
+
+/*=========================
+      RESPONSIVE
+==========================*/
+
+@media(max-width:991px){
+
+.timeline::before{
+left:30px;
+}
+
+.timeline-item{
+width:100%;
+padding-left:90px;
+padding-right:20px;
+left:0!important;
+text-align:left;
+}
+
+.left .card,
+.right .card{
+margin:0;
+}
+
+.circle{
+left:5px!important;
+right:auto!important;
+}
+
+.section-title h2{
+font-size:34px;
+}
+
+}
+
+@media(max-width:576px){
+
+.workflow-section{
+padding:60px 20px;
+}
+
+.section-title h2{
+font-size:28px;
+}
+
+.section-title p{
+font-size:15px;
+}
+
+.card{
+padding:20px;
+}
+
+.card h3{
+font-size:20px;
+}
+
+.card p{
+font-size:15px;
+}
+
+.circle{
+width:40px;
+height:40px;
+font-size:16px;
+}
+
+}
+
+.cta-section{
+    background: linear-gradient(135deg,#0f172a,#83a9fb);
+    padding:70px 20px;
+    text-align:center;
+    color:#fff;
+}
+
+.cta-content{
+    max-width:900px;
+    margin:auto;
+}
+
+.cta-content h2{
+    font-size:42px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.cta-content p{
+    font-size:18px;
+    line-height:1.8;
+    margin-bottom:35px;
+    color:#e5e7eb;
+}
+
+.cta-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:15px 35px;
+    border-radius:50px;
+    text-decoration:none;
+    font-size:18px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.btn-call{
+    background:#ff9800;
+    color:#fff;
+}
+
+.btn-call:hover{
+    background:#e68900;
+    transform:translateY(-3px);
+}
+
+.btn-email{
+    background:#fff;
+    color:#2563eb;
+}
+
+.btn-email:hover{
+    background:#f4f4f4;
+    transform:translateY(-3px);
+}
+
+.contact-info{
+    margin-top:35px;
+    font-size:18px;
+}
+
+.contact-info p{
+    margin:8px 0;
+}
+
+body{
+
+font-family:Arial, Helvetica, sans-serif;
+background:#f6f8fc;
+
+}
+
+.faq-section{
+
+padding:80px 0;
+
+}
+
+.faq-image{
+
+max-width:420px;
+animation:float 4s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-12px);
+
+}
+
+100%{
+
+transform:translateY(0);
+
+}
+
+}
+
+.faq-heading{
+
+font-size:42px;
+
+font-weight:700;
+
+margin-bottom:30px;
+
+color:#0046d5;
+
+}
+
+.accordion-item{
+
+border:none;
+
+margin-bottom:15px;
+
+border-radius:15px;
+
+overflow:hidden;
+
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+
+}
+
+.accordion-button{
+
+padding:20px;
+
+font-size:18px;
+
+font-weight:600;
+
+background:#fff;
+
+}
+
+.accordion-button:not(.collapsed){
+
+background:#0056ff;
+
+color:white;
+
+}
+
+.accordion-button:focus{
+
+box-shadow:none;
+
+}
+
+.accordion-body{
+
+font-size:16px;
+
+line-height:28px;
+
+color:#555;
+
+background:#fff;
+
+}
+
+
+/* ================= Fee Structure ================= */
+
+
+.course-overview{
+
+padding:90px 5%;
+background:#f8fafc;
+
+}
+
+.overview-container{
+
+max-width:1250px;
+margin:auto;
+
+display:grid;
+
+grid-template-columns:2fr 1fr;
+
+gap:35px;
+
+align-items:start;
+
+}
+
+.highlights-card{
+
+background:#fff;
+
+padding:45px;
+
+border-radius:20px;
+
+box-shadow:0 10px 40px rgba(0,0,0,.08);
+
+}
+
+.badge{
+
+background:#f97316;
+
+color:#fff;
+
+padding:8px 18px;
+
+border-radius:30px;
+
+font-size:13px;
+
+font-weight:600;
+
+display:inline-block;
+
+margin-bottom:18px;
+
+}
+
+.highlights-card h2{
+
+font-size:38px;
+
+margin-bottom:15px;
+
+}
+
+.highlights-card p{
+
+color:#666;
+
+line-height:28px;
+
+}
+
+.highlight-grid{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:25px;
+
+margin-top:35px;
+
+}
+
+.highlight-item{
+
+display:flex;
+
+gap:15px;
+
+align-items:center;
+
+padding:18px;
+
+border-radius:15px;
+
+background:#fff7ed;
+
+}
+
+.highlight-item i{
+
+font-size:28px;
+
+color:#f97316;
+
+}
+
+.highlight-item h4{
+
+margin-bottom:4px;
+
+}
+
+.bonus-box{
+
+margin-top:40px;
+
+background:#fff7ed;
+
+padding:25px;
+
+border-radius:15px;
+
+}
+
+.bonus-list{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:12px;
+
+margin-top:15px;
+
+}
+
+.bonus-list span{
+
+background:#fff;
+
+padding:10px 18px;
+
+border-radius:40px;
+
+font-weight:600;
+
+}
+
+.fee-card{
+
+background:#fff;
+
+border-radius:20px;
+
+padding:35px;
+
+text-align:center;
+
+box-shadow:0 12px 35px rgba(0,0,0,.08);
+
+position:sticky;
+
+top:110px;
+
+}
+
+.offer{
+
+background:#f97316;
+
+color:#fff;
+
+padding:8px 16px;
+
+border-radius:30px;
+
+font-size:13px;
+
+}
+
+.fee-card h1{
+
+font-size:55px;
+
+color:#f97316;
+
+margin:20px 0;
+
+}
+
+.fee-card ul{
+
+list-style:none;
+
+padding:0;
+
+margin:25px 0;
+
+text-align:left;
+
+}
+
+.fee-card li{
+
+margin-bottom:14px;
+
+}
+
+.enroll-btn{
+
+display:block;
+
+background:#f97316;
+
+color:#fff;
+
+padding:15px;
+
+border-radius:50px;
+
+text-decoration:none;
+
+font-weight:700;
+
+}
+
+.enroll-btn:hover{
+
+background:#ea580c;
+
+}
+
+.trust-section{
+
+padding:80px 5%;
+
+text-align:center;
+
+background:#fff;
+
+}
+
+.trust-section h2{
+
+font-size:38px;
+
+margin-bottom:10px;
+
+}
+
+.trust-grid{
+
+margin-top:45px;
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+
+gap:25px;
+
+max-width:1200px;
+
+margin-inline:auto;
+
+}
+
+.trust-card{
+
+background:#fff;
+
+padding:30px;
+
+border-radius:18px;
+
+box-shadow:0 8px 30px rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+.trust-card:hover{
+
+transform:translateY(-8px);
+
+}
+
+.trust-card img{
+
+height:70px;
+
+object-fit:contain;
+
+margin-bottom:15px;
+
+}
+
+@media(max-width:900px){
+
+.overview-container{
+
+grid-template-columns:1fr;
+
+}
+
+.highlight-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.fee-card{
+
+position:static;
+
+}
+
+}
+  </style>
+</head>
+
+<body>
+  <div class="page-wrapper">
+    <div class="container">
+      <div class="topbar">
+        <header>
+          <a href="#home" class="brand"><span>DOTNET</span></a>
+          <nav class="nav-links" aria-label="Primary navigation">
+            <a href="#home" class="active">Home</a>
+            <a href="#enroll">Fees</a>
+               <a href="#curriculum">Curriculum</a>
+            <a href="#contact">Contact</a>
+          </nav>
+          <a href="#contact" class="btn-cta" style="color: white;">Enroll Now</a>
+        </header>
+      </div>
+    </div>
+
+    <section class="hero" id="home">
+      <div class="container hero-grid">
+        <div class="hero-copy" data-aos="fade-right" data-aos-duration="1000">
+          <span class="eyebrow">Next-Gen .NET Full Stack Program</span>
+          <h1>AI Powered <span class="highlight">.NET Full Stack Development program</span> in techkraftiers</h1>
+          <p>Accelerate your career with a premium learning path tailored for ambitious developers. Master C#, ASP.NET Core Web API, Entity Framework, SQL Server, and Angular/React with live industry projects.</p>
+          <div class="hero-actions">
+            <a href="#curriculum" class="btn-primary" style="color: white;">Enroll Now</a>
+            <a href="#" class="btn-secondary">Download Syllabus</a>
+          </div>
+          <div class="hero-meta">
+            <div class="hero-meta-card">
+              <i class="fa-solid fa-calendar-check"></i>
+              <div><strong>10+ Enterprise Projects</strong><span>Production-grade architecture</span></div>
+            </div>
+            <div class="hero-meta-card">
+              <i class="fa-solid fa-rocket"></i>
+              <div><strong>100% Job Ready</strong><span>Placement training included</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual" data-aos="fade-left" data-aos-duration="1000">
+          <div class="hero-card">
+            <div class="hero-frame"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=900&q=80" alt="Professional developer workspace" loading="lazy" /></div>
+            <div class="tech-badges">
+              <div class="tech-badge">
+                <div class="tech-icon"><i class="fa-solid fa-code"></i></div>
+                <div><strong>C# & .NET 8</strong><span>Backend Engine</span></div>
+              </div>
+              <div class="tech-badge">
+                <div class="tech-icon"><i class="fa-solid fa-gears"></i></div>
+                <div><strong>ASP.NET Core</strong><span>Web API Framework</span></div>
+              </div>
+              <div class="tech-badge">
+                <div class="tech-icon"><i class="fa-solid fa-database"></i></div>
+                <div><strong>SQL Server</strong><span>Database Layer</span></div>
+              </div>
+              <div class="tech-badge">
+                <div class="tech-icon"><i class="fa-brands fa-angular"></i></div>
+                <div><strong>Angular/React</strong><span>Frontend UI</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    
+<!-- ================= COURSE HIGHLIGHTS ================= -->
+
+<section class="course-overview" id="enroll">
+
+    <div class="overview-container">
+
+        <!-- Left Side -->
+
+        <div class="highlights-card">
+
+            <span class="badge">Most Popular Program</span>
+
+            <h2>J.NET Full Stack Development</h2>
+
+            <p>
+                Become a Job Ready .NET Full Stack Development with Live Projects,
+                Industry Tools and Placement Assistance.
+            </p>
+
+            <div class="highlight-grid">
+
+                <div class="highlight-item">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <div>
+                        <h4>Live Classes</h4>
+                        <p>Instructor Led Training</p>
+                    </div>
+                </div>
+
+                <div class="highlight-item">
+                    <i class="fas fa-laptop-code"></i>
+                    <div>
+                        <h4>5+ Projects</h4>
+                        <p>Industry Level Projects</p>
+                    </div>
+                </div>
+
+                <div class="highlight-item">
+                    <i class="fas fa-briefcase"></i>
+                    <div>
+                        <h4>Placement Support</h4>
+                        <p>Interview Preparation</p>
+                    </div>
+                </div>
+
+                <div class="highlight-item">
+                    <i class="fas fa-certificate"></i>
+                    <div>
+                        <h4>Certificate</h4>
+                        <p>Course Completion</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="bonus-box">
+
+                <h3>🎁 Bonus Included</h3>
+
+                <div class="bonus-list">
+
+                    <span>Resume Building</span>
+                    <span>LinkedIn Profile</span>
+                    <span>GitHub Portfolio</span>
+                    <span>Mock Interviews</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Right Side Fee -->
+
+        <div class="fee-card">
+
+            <span class="offer">LIMITED OFFER</span>
+
+            <h3>Course Fee</h3>
+
+            <h1>₹30,000</h1>
+
+            <p class="emi">
+                EMI Starting From
+                <strong>₹10,000*3 Months</strong>
+            </p>
+
+            <ul>
+
+                <li>✔ Live Training</li>
+                <li>✔ Lifetime Notes</li>
+                <li>✔ Projects Included</li>
+                <li>✔ Placement Assistance</li>
+
+            </ul>
+
+            <a href="#registration-form" class="enroll-btn">
+                Enroll Now
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+    
+    <section id="curriculum" class="section-gradient bottom">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up" data-aos-duration="900">
+          <div>
+            <h2>Curriculum Modules</h2>
+            <p>Deep, structured modules with clear outcomes, mini-projects, and the core development skills global tech employers expect.</p>
+          </div>
+        </div>
+        <div class="accordion">
+          <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
+            <div class="accordion-header">
+              <div class="accordion-title"><strong>Module 1: C# Programming Fundamentals</strong><span>Data types, Control Flows, and Core Object-Oriented Principles.</span></div>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+              <ul>
+                <li>Classes, Objects, Inheritance, Polymorphism, Abstraction, and Encapsulation</li>
+                <li>Interfaces, Abstract Classes, Delegates, and Events</li>
+                <li>Mini Project: Console-based Library Management System</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item" data-aos="fade-up" data-aos-delay="160">
+            <div class="accordion-header">
+              <div class="accordion-title"><strong>Module 2: Advanced C# Features & LINQ</strong><span>Query operators, Extension Methods, and Multi-threading basics.</span></div>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+              <ul>
+                <li>Generics, Collections, and Exception Handling structures</li>
+                <li>LINQ query syntax and Lambda expressions for fast data operations</li>
+                <li>Mini Project: Enterprise CSV Data Processing Engine</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item" data-aos="fade-up" data-aos-delay="220">
+            <div class="accordion-header">
+              <div class="accordion-title"><strong>Module 3: Database Development with SQL Server</strong><span>Tables, Relationships, Indexes, and T-SQL commands.</span></div>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+              <ul>
+                <li>Database schemas, Normalization, Joins, Subqueries</li>
+                <li>Writing efficient Stored Procedures, Views, and Triggers</li>
+                <li>Mini Project: E-Commerce relational database schema model design</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item" data-aos="fade-up" data-aos-delay="280">
+            <div class="accordion-header">
+              <div class="accordion-title"><strong>Module 4: Data Access with Entity Framework Core</strong><span>ORM mapping patterns, Migrations, and database relationships.</span></div>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+              <ul>
+                <li>Code-First approach vs Database-First approach</li>
+                <li>Fluent API, Eager Loading, Lazy Loading, and Explicit Loading patterns</li>
+                <li>Mini Project: Database Abstract Layer using Repository Pattern</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item" data-aos="fade-up" data-aos-delay="340">
+            <div class="accordion-header">
+              <div class="accordion-title"><strong>Module 5: ASP.NET Core Web API Architecture</strong><span>Building high-speed corporate backend REST APIs.</span></div>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+              <ul>
+                <li>Controller-based APIs, Routing, Action Results, Status codes</li>
+                <li>Dependency Injection lifecycles (Transient, Scoped, Singleton)</li>
+                <li>Mini Project: Secure Task Tracker REST API Endpoint suite</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item" data-aos="fade-up" data-aos-delay="400">
+            <div class="accordion-header">
+              <div class="accordion-title"><strong>Module 6: API Security, Authentication & Identity</strong><span>User session protocols, encryption tokens, and route protection.</span></div>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+              <ul>
+                <li>Integrating Microsoft Identity Core Framework</li>
+                <li>Generating and verifying secure JSON Web Tokens (JWT)</li>
+                <li>Mini Project: Enterprise Role-Based User Access Management System</li>
+              </ul>
+            </div>
+          </div>
+          <div class="accordion-item" data-aos="fade-up" data-aos-delay="460">
+            <div class="accordion-header">
+              <div class="accordion-title"><strong>Module 7: Frontend UI Development (Angular / React)</strong><span>Building fast Single Page Frontend Client Interfaces.</span></div>
+              <i class="fa-solid fa-chevron-down"></i>
+            </div>
+            <div class="accordion-content">
+              <ul>
+                <li>Components, Directives, Data Binding, and Reactive Form fields</li>
+                <li>Consuming backend .NET API using HttpClient/Axios networks</li>
+                <li>Mini Project: Interactive Admin Dashboard Portal UI</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="workflow-section" id="workflow">
+
+    <div class="section-title">
+        <h2>.NET Full Stack <span>Learning Workflow</span></h2>
+        <p>Become a Professional .NET Full Stack Developer Step by Step</p>
+    </div>
+
+    <div class="timeline">
+
+        <div class="timeline-item left">
+            <span class="circle">1</span>
+            <div class="card">
+                <h3>Learn C# Fundamentals</h3>
+                <p>Variables, Data Types, Operators, Loops, Methods and Object-Oriented Programming.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right">
+            <span class="circle">2</span>
+            <div class="card">
+                <h3>.NET Fundamentals</h3>
+                <p>Understand .NET Framework, .NET Core, CLR, Assemblies and Project Structure.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item left">
+            <span class="circle">3</span>
+            <div class="card">
+                <h3>Frontend Development</h3>
+                <p>Learn HTML5, CSS3, Bootstrap and JavaScript to build responsive interfaces.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right">
+            <span class="circle">4</span>
+            <div class="card">
+                <h3>ASP.NET Core MVC</h3>
+                <p>Build dynamic web applications using MVC Architecture and Razor Views.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item left">
+            <span class="circle">5</span>
+            <div class="card">
+                <h3>Database</h3>
+                <p>Work with SQL Server, Tables, CRUD Operations, Stored Procedures and Joins.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right">
+            <span class="circle">6</span>
+            <div class="card">
+                <h3>Entity Framework Core</h3>
+                <p>Learn ORM, LINQ, Migrations, Database First and Code First Approach.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item left">
+            <span class="circle">7</span>
+            <div class="card">
+                <h3>REST API Development</h3>
+                <p>Create secure RESTful APIs using ASP.NET Core Web API.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right">
+            <span class="circle">8</span>
+            <div class="card">
+                <h3>Authentication & Security</h3>
+                <p>Implement Identity, JWT Authentication and Role-Based Authorization.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item left">
+            <span class="circle">9</span>
+            <div class="card">
+                <h3>Git & GitHub</h3>
+                <p>Version Control, Branching, Merging and Team Collaboration using Git.</p>
+            </div>
+        </div>
+
+        <div class="timeline-item right">
+            <span class="circle">10</span>
+            <div class="card">
+                <h3>Deployment</h3>
+                <p>Deploy .NET applications on IIS, Azure Cloud and Microsoft SQL Server.</p>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="tools-section" id="tools">
+
+    <div class="section-title">
+        <h2>Tools & <span>Technologies</span></h2>
+        <p>Master the latest technologies used in modern .NET Full Stack Development.</p>
+    </div>
+
+    <div class="tools-grid">
+
+        <div class="tool-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/6132/6132221.png">
+            <h4>.NET</h4>
+        </div>
+
+        <div class="tool-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/6132/6132222.png">
+            <h4>C#</h4>
+        </div>
+
+        <div class="tool-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png">
+            <h4>HTML5</h4>
+        </div>
+
+        <div class="tool-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png">
+            <h4>CSS3</h4>
+        </div>
+
+        <div class="tool-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png">
+            <h4>JavaScript</h4>
+        </div>
+
+        <div class="tool-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/1126/1126012.png">
+            <h4>React JS</h4>
+        </div>
+
+        <div class="tool-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/919/919836.png">
+            <h4>SQL Server</h4>
+        </div>
+
+        <div class="tool-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968853.png">
+            <h4>Git</h4>
+        </div>
+
+        <div class="tool-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968672.png">
+            <h4>GitHub</h4>
+        </div>
+
+        <div class="tool-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/919/919847.png">
+            <h4>Entity Framework</h4>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= TRUST SECTION ================= -->
+
+<section class="trust-section">
+
+    <h2>Trusted & Industry Connected</h2>
+
+    <p>Training aligned with industry standards and hiring ecosystem.</p>
+
+    <div class="trust-grid">
+
+        <div class="trust-card">
+            <img src="iso.jpg">
+            <h4>ISO Certified</h4>
+        </div>
+
+        <div class="trust-card">
+            <img src="msme.jpg">
+            <h4>MSME</h4>
+        </div>
+
+        <div class="trust-card">
+            <img src="ugcRecognized.jpg">
+            <h4>UGC</h4>
+        </div>
+
+        <div class="trust-card">
+            <img src="naac.jpg">
+            <h4>NAAC</h4>
+        </div>
+
+        <div class="trust-card">
+            <img src="aict.jpg">
+            <h4>AICTE</h4>
+        </div>
+
+        <div class="trust-card">
+            <img src="asenturee.jpg">
+            <h4>Accenture</h4>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Call To Action Section -->
+<section class="cta-section">
+    <div class="cta-content">
+        <h2>Ready to Start Your Journey?</h2>
+        <p>
+            Kickstart your digital career with TechKraftiers Digital.
+            Join our industry-focused training programs and get expert guidance.
+        </p>
+
+        <div class="cta-buttons">
+            <a href="tel:+917738415492" class="btn btn-call">
+                📞 Call Now
+            </a>
+
+            <a href="mailto:info@techkraftiersdigital.in" class="btn btn-email">
+                ✉ Email Us
+            </a>
+        </div>
+
+        <div class="contact-info">
+            <p><strong>Phone:</strong> +91 7738415492</p>
+            <p><strong>Email:</strong> info@techkraftiersdigital.in</p>
+        </div>
+    </div>
+</section>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Full Stack .NET FAQ</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<section class="faq-section" id="faq">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+<!-- Left Image -->
+
+<div class="col-lg-5 text-center">
+
+<img src="netfaq.jpg"
+class="faq-image img-fluid"
+alt="Full Stack .NET FAQ">
+
+</div>
+
+<!-- Right FAQ -->
+
+<div class="col-lg-7">
+
+<h2 class="faq-heading">
+
+Frequently Asked Questions
+
+</h2>
+
+<div class="accordion" id="dotnetFAQ">
+
+<!-- FAQ 1 -->
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#dotnet1">
+
+What is Full Stack .NET Development?
+
+</button>
+
+</h2>
+
+<div id="dotnet1"
+class="accordion-collapse collapse show"
+data-bs-parent="#dotnetFAQ">
+
+<div class="accordion-body">
+
+Full Stack .NET Development covers Frontend (HTML5, CSS3, JavaScript, Bootstrap), Backend development using C#, ASP.NET Core, MVC, Web APIs, Entity Framework Core, SQL Server, Git, GitHub, Azure Deployment, and Live Projects.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FAQ 2 -->
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#dotnet2">
+
+Who can join this course?
+
+</button>
+
+</h2>
+
+<div id="dotnet2"
+class="accordion-collapse collapse"
+data-bs-parent="#dotnetFAQ">
+
+<div class="accordion-body">
+
+Students, Freshers, Working Professionals, Career Switchers, and anyone interested in becoming a Full Stack .NET Developer can join this course.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FAQ 3 -->
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#dotnet3">
+
+Do I need prior programming knowledge?
+
+</button>
+
+</h2>
+
+<div id="dotnet3"
+class="accordion-collapse collapse"
+data-bs-parent="#dotnetFAQ">
+
+<div class="accordion-body">
+
+No.
+
+The course starts from programming fundamentals and gradually covers C#, ASP.NET Core MVC, Entity Framework Core, SQL Server, REST APIs, Authentication, and Full Stack Web Development.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FAQ 4 -->
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#dotnet4">
+
+What projects will I build?
+
+</button>
+
+</h2>
+
+<div id="dotnet4"
+class="accordion-collapse collapse"
+data-bs-parent="#dotnetFAQ">
+
+<div class="accordion-body">
+
+You will develop real-world applications including:
+
+✔ Employee Management System
+
+✔ Online Banking Application
+
+✔ Hospital Management System
+
+✔ E-Commerce Website
+
+✔ Inventory Management System
+
+✔ Student Portal
+
+✔ Full Stack CRUD Application
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FAQ 5 -->
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#dotnet5">
+
+Do you provide Placement Assistance?
+
+</button>
+
+</h2>
+
+<div id="dotnet5"
+class="accordion-collapse collapse"
+data-bs-parent="#dotnetFAQ">
+
+<div class="accordion-body">
+
+Yes.
+
+We provide Resume Building, LinkedIn & GitHub Profile Optimization, Mock Interviews, Aptitude Training, Soft Skills Development, Internship Opportunities, and Placement Assistance.
+
+</div>
+
+</div>
+
+</div>
+
+<!-- FAQ 6 -->
+
+<div class="accordion-item">
+
+<h2 class="accordion-header">
+
+<button class="accordion-button collapsed"
+type="button"
+data-bs-toggle="collapse"
+data-bs-target="#dotnet6">
+
+Will I receive a Certificate?
+
+</button>
+
+</h2>
+
+<div id="dotnet6"
+class="accordion-collapse collapse"
+data-bs-parent="#dotnetFAQ">
+
+<div class="accordion-body">
+
+Yes.
+
+After successfully completing the Full Stack .NET course and live projects, you will receive an Industry Recognized Course Completion Certificate.
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
+
+    <section id="tech" class="section-gradient alt">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up" data-aos-duration="900">
+          <div>
+            <h2>Premium .NET Full Stack Stack</h2>
+            <p>Explore the complete industry-standard tech stack that you will master during this intensive bootcamp.</p>
+          </div>
+        </div>
+        <div class="tech-grid">
+          <article class="tech-card" data-aos="zoom-in" data-aos-delay="100">
+            <i class="fa-solid fa-code"></i>
+            <h3>C# & .NET Core</h3>
+            <p>The cross-platform, high-performance programming engine developed by Microsoft.</p>
+            <ul>
+              <li>Object-Oriented Programming</li>
+              <li>LINQ & Lambda Expressions</li>
+              <li>Asynchronous (Async/Await)</li>
+            </ul>
+          </article>
+          <article class="tech-card" data-aos="zoom-in" data-aos-delay="160">
+            <i class="fa-solid fa-gears"></i>
+            <h3>ASP.NET Core API</h3>
+            <p>A fast, modern framework for building RESTful web services and cloud backends.</p>
+            <ul>
+              <li>Dependency Injection</li>
+              <li>Built-in Middleware Pipeline</li>
+              <li>Routing & Content Negotiation</li>
+            </ul>
+          </article>
+          <article class="tech-card" data-aos="zoom-in" data-aos-delay="220">
+            <i class="fa-solid fa-cubes"></i>
+            <h3>Entity Framework Core</h3>
+            <p>Object-Relational Mapper (ORM) that enables .NET developers to work with a database using C# objects.</p>
+            <ul>
+              <li>Code-First & Database-First</li>
+              <li>LINQ to Entities</li>
+              <li>Automated Migrations</li>
+            </ul>
+          </article>
+          <article class="tech-card" data-aos="zoom-in" data-aos-delay="280">
+            <i class="fa-solid fa-database"></i>
+            <h3>Microsoft SQL Server</h3>
+            <p>Enterprise relational database system used to store and manage critical app data.</p>
+            <ul>
+              <li>Stored Procedures & Triggers</li>
+              <li>Query Performance Tuning</li>
+              <li>Database Indexing</li>
+            </ul>
+          </article>
+          <article class="tech-card" data-aos="zoom-in" data-aos-delay="340">
+            <i class="fa-brands fa-angular"></i>
+            <h3>Angular / React</h3>
+            <p>Powerhouse frontend platforms used to craft dynamic Single Page Applications (SPAs).</p>
+            <ul>
+              <li>Component Architecture</li>
+              <li>API Integration (HttpClient)</li>
+              <li>Reactive Forms & Routing</li>
+            </ul>
+          </article>
+          <article class="tech-card" data-aos="zoom-in" data-aos-delay="400">
+            <i class="fa-solid fa-shield-cat"></i>
+            <h3>JWT & Identity Framework</h3>
+            <p>Robust security layers used to handle user accounts, secure passwords, and access tokens.</p>
+            <ul>
+              <li>Token-Based Security</li>
+              <li>Role & Claim Authorization</li>
+              <li>Data Encryption Protocols</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up" data-aos-duration="900">
+          <div>
+            <h2>Career-Driven Program Features</h2>
+            <p>Everything is structured to help you land high-paying software engineer roles in top MNCs with absolute confidence.</p>
+          </div>
+        </div>
+        <div class="feature-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));">
+          <article class="feature-card" data-aos="fade-up" data-aos-delay="100"><i class="fa-solid fa-screwdriver-wrench"></i><h3>Enterprise Projects</h3><p>Build secure web applications with repository patterns and clean architecture.</p><span>Hands-on experience</span></article>
+          <article class="feature-card" data-aos="fade-up" data-aos-delay="160"><i class="fa-solid fa-briefcase"></i><h3>MNC Interview Kit</h3><p>Get exclusive data structures and system design preparation materials.</p><span>Career acceleration</span></article>
+          <article class="feature-card" data-aos="fade-up" data-aos-delay="220"><i class="fa-solid fa-users-line"></i><h3>Placement Support</h3><p>Mock technical interviews, resume reviews, and corporate hiring loops.</p><span>Job-focused training</span></article>
+          <article class="feature-card" data-aos="fade-up" data-aos-delay="400"><i class="fa-solid fa-infinity"></i><h3>Lifetime Access</h3><p>Return anytime to premium dashboard updates, updated recordings, and .NET news.</p><span>Always stay current</span></article>
+        </div>
+      </div>
+    </section>
+
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-header" data-aos="fade-up" data-aos-duration="900">
+          <div>
+            <h2>Contact & Enrollment</h2>
+            <p>Reach out, book a technical counseling session, or send your career questions to begin your professional software engineering journey.</p>
+          </div>
+        </div>
+        <div class="contact-grid">
+          <aside class="contact-panel" data-aos="fade-right" data-aos-duration="1000">
+            <h3>Institute Information</h3>
+            <div class="contact-card"><strong>Address</strong><span>Nerul Address: F-19-A, Haware’s Centurion Mall, Sector 19A, Nerul East, Navi Mumbai, 400706.</span></div>
+            <div class="contact-card"><strong>Phone</strong><span>+91 7738415492</span></div>
+            <div class="contact-card"><strong>Email</strong><span>info@techkraftiersdigital.in</span></div>
+            <div class="contact-card"><strong>Office Hours</strong><span>Mon - Sat, 09:00 AM - 07:00 PM</span></div>
+          </aside>
+          <div class="contact-form" data-aos="fade-left" data-aos-duration="1000">
+            <div class="input-group"><label for="name">Name</label><input type="text" id="name" placeholder="Your name" required /></div>
+            <div class="input-group"><label for="email">Email</label><input type="email" id="email" placeholder="Your email" required /></div>
+            <div class="input-group"><label for="message">Message</label><textarea id="message" placeholder="Tell us about your learning goals" required></textarea></div>
+            <button type="submit">Send Inquiry</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <h3>DOTNETIFY</h3>
+          <p class="footer-note">A premium software engineering academy for ambitious developers wanting to master industry-standard enterprise frameworks and launch high-growth tech careers.</p>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#curriculum">Curriculum</a></li>
+            <li><a href="#projects">Projects</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Follow Us</h3>
+          <ul class="social-links">
+            <li><a href="#"><i class="fa-brands fa-facebook-f"></i> Facebook</a></li>
+            <li><a href="#"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a></li>
+            <li><a href="#"><i class="fa-brands fa-instagram"></i> Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="container">
+        <p class="footer-note">© 2026 DOTNETIFY. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <a class="whatsapp-float" href="https://wa.me/917738415492" target="_blank" aria-label="Chat on WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+  <button class="scroll-top" aria-label="Scroll to top"><i class="fa-solid fa-arrow-up"></i></button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js" integrity="sha512-ks0Poa0nGzKPhMWKmEyRpN/uU/Vd7BFNdTksIE7iDYmrrQZK6sBHsIt0YrGQhT4KWA3yeXGYw7/XYU2v7W9Ykg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    AOS.init({ once: true, duration: 900, easing: 'ease-out-cubic' });
+
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    accordionHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const item = header.parentElement;
+        const content = header.nextElementSibling;
+        const open = item.classList.contains('active');
+        document.querySelectorAll('.accordion-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.accordion-content').classList.remove('open');
+          i.querySelector('.accordion-content').style.maxHeight = null;
+        });
+        if (!open) {
+          item.classList.add('active');
+          content.classList.add('open');
+          content.style.maxHeight = content.scrollHeight + 'px';
+        }
+      });
+    });
+
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section[id]');
+    const scrollTopBtn = document.querySelector('.scroll-top');
+
+    const scrollSpy = () => {
+      const scrollY = window.pageYOffset;
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          navLinks.forEach(link => link.classList.remove('active'));
+          const activeLink = document.querySelector('.nav-links a[href*=' + sectionId + ']');
+          if (activeLink) activeLink.classList.add('active');
+        }
+      });
+      if (scrollY > 450) {
+        scrollTopBtn.classList.add('visible');
+      } else {
+        scrollTopBtn.classList.remove('visible');
+      }
+    };
+
+    window.addEventListener('scroll', scrollSpy);
+    scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', e => {
+        const targetId = link.getAttribute('href');
+        if (targetId.startsWith('#')) {
+          e.preventDefault();
+          document.querySelector(targetId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
